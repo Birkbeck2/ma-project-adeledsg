@@ -1,0 +1,1212 @@
+/*Root elements*/
+*{
+    box-sizing: border-box; /*changing CSS box model, including padding and border in element's width and height to not find elements bigger than viewport*/
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px; /*Setting the default font size to 16pixels*/
+}
+body, html {
+    margin: 0;
+    background-color: rgba(0, 54, 103, 1);
+}
+html { /*Hidding scrollbars: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_hide_scrollbar_keep_func*/
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+html::-webkit-scrollbar {
+    display: none; /*Chrome and Safari*/
+}
+
+p {
+    font-family: 'inter', 'sans-serif';
+    color: rgba(48, 48, 50, 1);
+    font-weight: bold;
+}
+
+
+
+/*Using four device breakpoints as recommend by W3C school, yet focusing more on larger screens as per the intended experience https://www.w3schools.com/howto/howto_css_media_query_breakpoints.asp*/
+@media only screen and (max-width: 767px) {
+
+/*Titles*/
+#indication{
+    display: none;
+}
+.scroll-out{
+    padding-right: 8%;
+    padding-top: 10%;
+    padding-bottom: 5%;
+}
+#title {
+    font-family: 'Tweaked', sans-serif;                                                        
+    position: relative;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    text-align: right;
+    color: rgba(178, 198, 255, 1);
+}
+#subtitle {
+    font-family: 'Mynerve', sans-serif;                             
+    position: relative;
+    text-align: right;
+    color: rgba(204, 204, 204, 1);
+    font-weight: 100;
+    font-size: 1.5rem;
+    color: rgba(178, 198, 255, 1);
+}
+
+/*Landing*/
+#africa-svg{
+    overflow: visible;
+}
+.land {
+    fill: rgba(255, 199, 0);
+    fill-opacity: 1;
+}
+.landing{
+    min-height: 100vh;
+}
+
+/*Chapter Zero*/
+.chapter{
+    width: 100%;
+    margin: 2%;
+    min-height: 100vh;
+    position: relative;
+}
+#zero{
+    position: relative;
+}
+#center{
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;  
+}
+#paragraph-0 {
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+#ff-svg, #fs-svg, #ft-svg, #fl-svg, #pf-svg{
+    display: none;
+}
+
+/*Chapter One*/
+.container{
+    display: none;
+}
+#chapter-holder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; 
+    gap: 10%;
+}
+#paragraph-1{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+#paragraph-2{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+
+/*Chapter Two*/
+#forest, #baobab, #acacia, #baobab-2, #blood, #blood-layer{
+    display: none;
+}
+#two{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100vh;
+    text-align: center; 
+    gap: 10%;
+}
+#paragraph-3{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+#paragraph-4{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+
+/*Chapter Three*/
+#plain{
+    display: none;
+}
+#three{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-5{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+#death{
+    width: 100%;
+    height: auto;
+}
+
+/*Chapter Four*/
+#clouds{
+    display: none;
+}
+#plants{
+    display: none;
+}
+#four{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-6{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+#paragraph-7{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+
+/*Chapter Five*/
+#waves{
+    display: none;
+}
+#five{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-8{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+
+/*Chapter Six*/
+#six{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-9{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+#jump{
+    width: 100%;
+    height: auto;
+}
+
+/*Chapter Seven*/
+#leaves, #animals, #acacia-two, #baobab-two, #green-plain-one, #green-plain-two, #green-plain-three, #repeated-wave, #cloud-five{
+    display: none;
+}
+#seven{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-10{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+/*Last chapter*/
+#end{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-11{
+    background-color: rgba(255, 199, 0);
+    line-height: 2;
+}
+
+}
+
+@media only screen and (min-width: 768px) {
+
+/*Titles*/
+#indication{
+    display: none;
+}
+.scroll-out{
+    padding-right: 8%;
+    padding-top: 10%;
+    padding-bottom: 5%;
+}
+#title {
+    font-family: 'Tweaked', sans-serif;                                                        
+    position: relative;
+    text-transform: uppercase;
+    font-size: 6rem;
+    text-align: right;
+    color: rgba(178, 198, 255, 1);
+}
+#subtitle {
+    font-family: 'Mynerve', sans-serif;                             
+    position: relative;
+    text-align: right;
+    color: rgba(204, 204, 204, 1);
+    font-weight: 100;
+    font-size: 4rem;
+    color: rgba(178, 198, 255, 1);
+}
+/*Landing*/
+#africa-svg{
+    overflow: visible;
+}
+.land {
+    fill: rgba(255, 199, 0);
+    fill-opacity: 1;
+}
+.landing{
+    min-height: 100vh;
+}
+
+/*Chapter Zero*/
+.chapter{
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+#zero{
+    position: relative;
+}
+#center{
+    position: absolute;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;  
+}
+#paragraph-0 {
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+#ff-svg, #fs-svg, #ft-svg, #fl-svg, #pf-svg{
+    display: none;
+}
+
+/*Chapter One*/
+#mum, #zebra, #gazelle{
+    display: none;
+}
+#chapter-holder{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;  
+    gap: 5%;
+}
+#paragraph-1{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+#paragraph-2{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+.head, #tail {
+    transform-origin: center;
+    animation: moveSideToSide 1s infinite alternate ease-in-out; /*Applying the css animation below to the head and tail paths on SVG gnu*/
+}
+
+@keyframes moveSideToSide { /*Defining an animation starting the rotation of an element at -5 and ends it at 3 degrees*/
+    from {
+        transform: rotate(-5deg);
+    }
+    to {
+        transform: rotate(3deg);
+    }
+}
+
+/*Chapter Two*/
+#forest, #blood, #blood-layer{
+    display: none;
+}
+#two{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center; 
+    gap: 10%;
+    padding: 2%;
+}
+#paragraph-3{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+#paragraph-4{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+#trees{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 2%;
+    align-items: center;
+    justify-content: center;
+}
+#baobab, #acacia, #baobab-2{
+    width: 30%;
+    height: auto;
+}
+/*Chapter Three*/
+#plain{
+    display: none;
+}
+#three{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-5{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+#death{
+    width: 100%;
+    height: auto;
+}
+/*Chapter Four*/
+#clouds{
+    display: none;
+}
+#plants{
+    display: none;
+}
+#four{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: auto;
+    text-align: center; 
+    padding: 2%;
+    position: relative;
+}
+#paragraph-6{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+#paragraph-7{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+/*Chapter Five*/
+#waves{
+    display: none;
+}
+#five{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-8{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+
+/*Chapter Six*/
+#six{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-9{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+#jump{
+    width: 100%;
+    height: auto;
+}
+
+/*Chapter Seven*/
+#leaves, #animals, #acacia-two, #baobab-two, #green-plain-one, #green-plain-two, #green-plain-three, #repeated-wave, #cloud-five{
+    display: none;
+}
+#seven{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-10{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+/*Last chapter*/
+#end{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    text-align: center; 
+    gap: 5%;
+    padding: 2%;
+    position: relative;
+}
+#paragraph-11{
+    padding: 10%;
+    line-height: 2;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+}
+
+@media only screen and (min-width: 1024px) {
+.scroll-out{
+    padding-right: 8%;
+    padding-top: 8%;
+    padding-bottom: 2%;
+}
+#title {
+    font-size: 10rem;
+}
+#subtitle {
+    font-size: 3rem;
+}
+#indication{
+    display: block;
+}
+#indication{
+    padding-right: 8%;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: end;
+    position: absolute;
+    right: 0;
+}
+#indication p {
+    font-family: 'inter', 'sans-serif';
+    position: relative;
+    text-align: right;
+    color: rgba(178, 149, 255, 1);
+    font-weight: 100;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding-bottom: 2%;
+}
+#indication svg{
+    display: block;  
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 70%;
+}
+
+/*Chapter Zero*/
+.chapter{
+    min-height: 100vh;
+    width: 100%;
+}
+#zero{
+    position: relative;
+}
+#center{
+    position: absolute;
+    top: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;  
+}
+#paragraph-0 {
+    padding-right: 15%;
+    padding-left: 17%;
+    line-height: 3;
+    position: relative;
+    background-color: rgba(255, 199, 0);
+}
+
+.footprints{
+    position: absolute;
+    top: 0;
+    min-height: 100vh;
+}
+#ff-svg{
+    display: block;
+    position: absolute;
+    top: 15%;
+    left: -40%;
+}
+#fs-svg{
+    display: block;
+    position: absolute;
+    top: 60%;
+    left: -30%;
+}
+#ft-svg{
+    display: block;
+    position: absolute;
+    top: 45%;
+    left: 10%;
+}
+#fl-svg{
+    display: block;
+    position: absolute;
+    top: 75%;
+    left: 15%;
+
+}
+#pf-svg{
+    display: block;
+    position: absolute;
+    top: 60%;
+    left: 40%;
+}
+
+/*Chapter One*/
+#one {
+    position: relative;
+    width: 100%; 
+    height: 100vh; 
+}
+
+#chapter-holder {
+    position: absolute;
+    top: 0;
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    z-index: 1;
+}
+
+#sketch-holder {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2; 
+}
+
+#paragraph-1 {
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2.5;
+    position: relative;
+    color: rgba(48, 48, 50, 1);
+    background-color: rgba(221, 221, 221, 0.6);
+    display: inline-block;
+    width: 50%;
+    z-index: 11;
+}
+#paragraph-2{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2.5;
+    position: absolute;
+    color: rgba(48, 48, 50, 1);
+    background-color: rgba(221, 221, 221, 0.6);
+    width: 50%;
+    z-index: 12;
+}
+.container{
+    display: block;
+    position: relative;
+    height: 100%;   
+    width: 100%;
+}
+#gnu {
+    display: block;
+    position: absolute;
+    bottom: -40%;  
+    left: 40%;
+    z-index: 10;
+    width: 55%;
+    height: auto;
+}
+#mum {
+    display: block;
+    position: absolute;
+    right: 0;
+    z-index: 9;
+    width: 80%;
+    height: auto;
+    bottom: -30%;
+}
+#zebra{
+    display: block;
+    position: absolute;
+    z-index: 9;
+    top: -90%;
+    width: 30%;
+    height: auto;
+    left: 10%;
+}
+#gazelle{
+    display: block;
+    position: absolute;
+    z-index: 9;
+    top: -15%;
+    left: 10%;
+    width: 20%;
+    height: auto;
+}
+/*Chapters 2*/
+#two{
+    background-color: rgba(48, 48, 50, 1);
+    position: relative;
+    max-height: 100vh;
+}
+#forest{
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    z-index: 3;
+    position: relative;
+}
+#paragraph-3{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2.5;
+    position: absolute;
+    color: rgba(48, 48, 50, 1);
+    background-color: rgba(221, 221, 221, 0.6);
+    z-index: 10;
+    width: 50%;
+}
+#trees{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    padding: 0%;
+    top: 0;
+    left: 0;
+}
+#baobab{
+    display: block;
+    width: 40%;
+    height: auto;
+    opacity: 0;
+    z-index: 4;
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+}
+#acacia{
+    display: block;
+    width: 40%;
+    height: auto;
+    opacity: 0;
+    z-index: 4;
+    position: absolute;
+    right: 0;
+    bottom: 5%;
+}
+#baobab-2{
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    z-index: 2;
+    position: absolute;
+    top: -6%;
+}
+#paragraph-4{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2.5;
+    position: absolute;
+    color: rgba(48, 48, 50, 1);
+    background-color: rgba(221, 221, 221, 0.6);
+    z-index: 10;
+    width: 50%;
+}
+#blood{
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    z-index: 20;
+    position: absolute;
+    top: 0;
+    left: 0;;
+}
+#blood-layer{
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    z-index: 21;
+    background-color: red;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+/*Chapter three*/
+#three{
+    position: relative;
+    padding: 0%;
+}
+#paragraph-5{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2.5;
+    position: absolute;
+    color: rgba(48, 48, 50, 1);
+    background-color: rgba(221, 221, 221, 0.6);
+    z-index: 11;
+    width: 50%;
+}
+#death{
+    width: 100vw;
+    height: auto;
+    background-color: red;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    position: absolute;
+}
+#plain{
+    display: block;
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: -20%;
+}
+
+/*Chapter Four*/
+#four{
+    position: relative;
+    background-color: rgba(0, 54, 103, 1);
+    max-height: 100vh;
+    padding: 0%;
+}
+#paragraph-6{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2.5;
+    position: absolute;
+    color: rgba(48, 48, 50, 1);
+    background-color: rgba(221, 221, 221, 0.6);
+    z-index: 10;
+    width: 50%;
+}
+#clouds{
+    display: block;
+}
+#plants {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+#plant {
+    position: absolute;
+    bottom: 0;  
+    left: 0;
+    z-index: 2;  
+}
+#grounds {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+}
+#paragraph-7{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2.5;
+    position: absolute;
+    color: rgba(48, 48, 50, 1);
+    background-color: rgba(221, 221, 221, 0.6);
+    z-index: 10;
+    width: 50%;
+}
+
+/*Chapter 5*/
+#five{
+    background-color: rgba(196, 181, 140, 1);
+    position: relative;
+    overflow-x: hidden;
+    max-height: 100vh;
+    overflow-y: hidden;
+    padding: 0%;
+}
+#waves {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 110%;
+    height: auto;
+    left: -60%;
+    z-index: 7;
+}
+
+@keyframes wave-one-motion {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4%); }
+}
+
+@keyframes wave-two-motion {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-4%); }
+}
+
+@keyframes wave-three-motion {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4%); }
+}
+
+#wave-one{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: 9;
+    animation: wave-one-motion 10s infinite alternate ease-in-out;
+}
+#wave-two{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: 8;
+    animation: wave-two-motion 10s infinite alternate ease-in-out;
+}
+#wave-three{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: 7;
+    animation: wave-three-motion 12s infinite alternate ease-in-out;
+}
+#paragraph-8{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2.5;
+    position: absolute;
+    color: rgba(48, 48, 50, 1);
+    background-color: rgba(221, 221, 221, 0.6);
+    z-index: 10;
+    width: 50%;
+}
+/*Chapter Six*/
+#six{
+    background-color: rgba(86, 156, 219, 1);
+    position: relative;
+    min-height: 100vh;
+}
+#paragraph-9{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2.5;
+    position: absolute;
+    color: rgba(48, 48, 50, 1);
+    background-color: rgba(221, 221, 221, 0.6);
+    z-index: 10;
+    width: 50%;
+}
+#jump{
+    width: auto;
+    right: 0;
+    height: 100vh;
+    z-index: 9;
+    position: absolute;
+}
+
+/*Chapter Seven*/
+#seven{
+    background-color: rgba(86, 156, 219, 1);
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+#animals{
+    display: block;
+}
+#leaf-one {
+    display: block;
+    z-index: 3; 
+    width: 20%;
+    height: auto;
+    position: absolute;
+    bottom: 0; 
+    left: 15%;
+    z-index: 5;
+}
+#leaf-two{
+    display: block;
+    z-index: 3; 
+    width: 22%;
+    height: auto;
+    position: absolute;
+    bottom: 0; 
+    right: 20%;
+    z-index: 5;
+}
+#green-plain-one{
+    display: block;
+    position: absolute;
+    bottom: 0; 
+    z-index: 4;
+    width: 100%;
+    height:auto;
+}
+#green-plain-two{
+    display: block;
+    position: absolute;
+    bottom: 0; 
+    z-index: 3;
+    left: 0;
+    width: 60%;
+    height: auto;
+}
+#green-plain-three{
+    display: block;
+    position: absolute;
+    bottom: 0; 
+    z-index: 2;
+    right: 0;
+    width: 60%;
+    height: auto;
+}
+#repeated-wave{
+    display: block;
+    position: absolute;
+    bottom: 40%; 
+    z-index: 1;
+    left: 20%;
+    width: 100%;
+    height: auto;
+}
+#cloud-five{
+    display: block;
+    position: absolute;
+    z-index: 1;
+    right: 10%;
+    width: 30%;
+    height: auto;
+    top: 0;
+}
+#gnu-two{
+    display: block;
+    position: absolute;
+    z-index: 5;
+    width: 16%;
+    height: auto;
+    bottom: 20%;
+    left: 45%;
+}
+#gazelle-two{
+    display: block;
+    position: absolute;
+    z-index: 4;
+    width: 10%;
+    height: auto;
+    top: 20%;
+    left: 5%;
+}
+#zebra-two{
+    display: block;
+    position: absolute;
+    z-index: 4;
+    width: 17%;
+    height: auto;
+    top: 25%;
+    left: 15%;
+}
+#gnu-mum-two{
+    display: block;
+    position: absolute;
+    z-index: 4;
+    width: 17%;
+    height: auto;
+    right: 5%;
+    top: 25%;
+}
+#acacia-two{
+    display: block;
+    position: absolute;
+    z-index: 5;
+    width: 23%;
+    height: auto;
+    left: 0;
+    bottom: 10%;
+}
+#baobab-two{
+    display: block;
+    position: absolute;
+    z-index: 3;
+    width: 25%;
+    height: auto;
+    right: -5%;
+    bottom: 5%;
+}
+#paragraph-10{
+    padding-right: 2%;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 2.5;
+    position: absolute;
+    color: rgba(48, 48, 50, 1);
+    background-color: rgba(221, 221, 221, 0.6);
+    z-index: 10;
+    width: 50%;
+}
+/*End*/
+#end{
+    background-color: rgba(196, 217, 119, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;    
+    padding: 0%;
+}
+#paragraph-11 {
+    padding-right: 15%;
+    padding-left: 17%;
+    line-height: 3;
+    position: relative;
+    width: 80%;
+    background-color: rgba(196, 217, 119, 1);        
+}
+
+}
+@media only screen and (min-width: 1200px) {}
