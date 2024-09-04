@@ -42,7 +42,7 @@ p {
     font-family: 'Tweaked', sans-serif;                                                        
     position: relative;
     text-transform: uppercase;
-    font-size: 2.5rem;
+    font-size: 2.5rem; /*Setting all font size in relation to the font size defined in the root element*/
     text-align: right;
     color: rgba(178, 198, 255, 1);
 }
@@ -58,7 +58,7 @@ p {
 
 /*Landing*/
 #africa-svg{
-    overflow: visible;
+    overflow: visible; /*making sure that all the map appears on the screen, allowing for the zoom in animation in js*/
 }
 .land {
     fill: rgba(255, 199, 0);
@@ -374,18 +374,20 @@ p {
     position: relative;
     background-color: rgba(255, 199, 0);
 }
-.head, #tail {
-    transform-origin: center;
-    animation: moveSideToSide 1s infinite alternate ease-in-out; /*Applying the css animation below to the head and tail paths on SVG gnu*/
-}
 
-@keyframes moveSideToSide { /*Defining an animation starting the rotation of an element at -5 and ends it at 3 degrees*/
+/*Creating an animation using CSS instead of JS as the animation should run continuously and independently of user actions https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes*/
+@keyframes moveSideToSide {  /*Defining the animation that will rotate elements*/
     from {
-        transform: rotate(-5deg);
+        transform: rotate(-5deg); /*Starting the rotation at -5 degrees*/
     }
     to {
-        transform: rotate(3deg);
+        transform: rotate(3deg); /* Ending the rotation at 3 degrees */
     }
+}
+
+.head, #tail { /*Applying the 'moveSideToSide' animation to the head and tail of the SVG gnu.*/
+    transform-origin: center; /* Ensuring the rotation happens from the center of the element */
+    animation: moveSideToSide 1s infinite alternate ease-in-out; /* Applying animation with smooth acceleration and deceleration, running continuously in a loop with a 1-second duration https://www.w3schools.com/css/css3_transitions.asp#:~:text=ease%20%2D%20specifies%20a%20transition%20effect,effect%20with%20a%20slow%20end*/
 }
 
 /*Chapter Two*/
@@ -428,6 +430,7 @@ p {
     width: 30%;
     height: auto;
 }
+
 /*Chapter Three*/
 #plain{
     display: none;
@@ -453,6 +456,7 @@ p {
     width: 100%;
     height: auto;
 }
+
 /*Chapter Four*/
 #clouds{
     display: none;
@@ -482,6 +486,7 @@ p {
     position: relative;
     background-color: rgba(255, 199, 0);
 }
+
 /*Chapter Five*/
 #waves{
     display: none;
@@ -546,6 +551,7 @@ p {
     position: relative;
     background-color: rgba(255, 199, 0);
 }
+
 /*Last chapter*/
 #end{
     display: flex;
@@ -566,7 +572,7 @@ p {
 }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px){
 .scroll-out{
     padding-right: 8%;
     padding-top: 8%;
@@ -642,7 +648,7 @@ p {
     min-height: 100vh;
 }
 #ff-svg{
-    display: block;
+    display: block; /*I have to display block otherwise the display: none from smaller media queries overrides it*/
     position: absolute;
     top: 15%;
     left: -40%;
@@ -725,15 +731,18 @@ p {
 }
 .container{
     display: block;
-    position: relative;
+    position: absolute;
     height: 100%;   
     width: 100%;
+    top: 0;
+    left: 0;
+
 }
 #gnu {
     display: block;
     position: absolute;
-    bottom: -40%;  
-    left: 40%;
+    bottom: 0;  
+    left: 30%;
     z-index: 10;
     width: 55%;
     height: auto;
@@ -745,13 +754,13 @@ p {
     z-index: 9;
     width: 80%;
     height: auto;
-    bottom: -30%;
+    bottom: 0;
 }
 #zebra{
     display: block;
     position: absolute;
     z-index: 9;
-    top: -90%;
+    top: 0;
     width: 30%;
     height: auto;
     left: 10%;
@@ -760,11 +769,12 @@ p {
     display: block;
     position: absolute;
     z-index: 9;
-    top: -15%;
+    top: 40%;
     left: 10%;
     width: 20%;
     height: auto;
 }
+
 /*Chapters 2*/
 #two{
     background-color: rgba(48, 48, 50, 1);
@@ -861,6 +871,7 @@ p {
     left: 0;
     position: absolute;
 }
+
 /*Chapter three*/
 #three{
     position: relative;
@@ -964,25 +975,21 @@ p {
     display: block;
     position: absolute;
     bottom: 0;
-    width: 110%;
+    width: 110%; /*the width has to be slightly larger than the screen to not reveal the edge of the waves SVG when they move horizontally in the animation below*/
     height: auto;
     left: -60%;
     z-index: 7;
 }
 
+/*Defining two animations to move the waves SVG horizontally*/
 @keyframes wave-one-motion {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(4%); }
+    0%, 100% { transform: translateX(0); }  /* No movement at the start and end */
+    50% { transform: translateX(4%); } /* Moves 4% to the right at the middle of the animation */
 }
 
 @keyframes wave-two-motion {
     0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(-4%); }
-}
-
-@keyframes wave-three-motion {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(4%); }
+    50% { transform: translateX(-4%); } /* Moves 4% to the left at the middle of the animation, going opposite direction */
 }
 
 #wave-one{
@@ -991,7 +998,7 @@ p {
     width: 100%;
     height: auto;
     z-index: 9;
-    animation: wave-one-motion 10s infinite alternate ease-in-out;
+    animation: wave-one-motion 10s infinite alternate ease-in-out; /*aplying animation*/
 }
 #wave-two{
     position: absolute;
@@ -999,7 +1006,7 @@ p {
     width: 100%;
     height: auto;
     z-index: 8;
-    animation: wave-two-motion 10s infinite alternate ease-in-out;
+    animation: wave-two-motion 10s infinite alternate ease-in-out; /*applying animation*/
 }
 #wave-three{
     position: absolute;
@@ -1007,7 +1014,7 @@ p {
     width: 100%;
     height: auto;
     z-index: 7;
-    animation: wave-three-motion 12s infinite alternate ease-in-out;
+    animation: wave-one-motion 12s infinite alternate ease-in-out; /*aplying animation*/
 }
 #paragraph-8{
     padding-right: 2%;
@@ -1108,7 +1115,7 @@ p {
 #repeated-wave{
     display: block;
     position: absolute;
-    bottom: 40%; 
+    bottom: 30%; 
     z-index: 1;
     left: 20%;
     width: 100%;
@@ -1209,4 +1216,95 @@ p {
 }
 
 }
-@media only screen and (min-width: 1200px) {}
+
+@media only screen and (min-width: 1200px){
+.scroll-out{
+    padding-top: 5%;
+}
+#indication{
+    padding-bottom: 2%;
+}
+#paragraph-0 {
+    font-size: 1.5rem;
+}
+
+/*Chapter One*/
+#paragraph-1 {
+    font-size: 1.5rem;
+}
+#paragraph-2 {
+    font-size: 1.5rem;
+}
+#gnu{
+    bottom: -10%;
+}
+#mum{
+    bottom: -15%;
+}
+#zebra{
+    bottom: -10%;
+}
+#gazelle{
+    bottom: -5%;
+}
+
+/*Chapter Two*/
+#paragraph-3{
+    font-size: 1.5rem;
+}
+#baobab{
+    width: 50%;
+}
+#paragraph-4{
+    font-size: 1.5rem;
+}
+
+/*Chapter Three*/
+#paragraph-5{
+    font-size: 1.5rem;
+}
+#plain{
+    bottom: -10%;
+}
+
+/*Chapter Four*/
+#paragraph-6{
+    font-size: 1.5rem;
+}
+#paragraph-7{
+    font-size: 1.5rem;
+}
+
+/*Chapter Five*/
+#paragraph-8{
+    font-size: 1.5rem;
+}
+
+/*Chapter Six*/
+#paragraph-9{
+    font-size: 1.5rem;
+}
+
+/*Chapter Seven*/
+#paragraph-10{
+    font-size: 1.5rem;
+}
+#gnu-two{
+    width: 20%;
+}
+#gazelle-two{
+    top: 30%;
+}
+#zebra-two{
+    top: 35%;
+}
+#gnu-mum-two{
+    top: 30%;
+}
+
+/*End*/
+#paragraph-11{
+    font-size: 1.5rem;
+    padding: 0;
+}
+}

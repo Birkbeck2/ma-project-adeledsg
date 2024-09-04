@@ -29,7 +29,7 @@ gsap.to(".scroll-out", {
     scrollTrigger:{ //method to make the animation depending on scroll
         trigger: ".scroll-out", //animation is triggered by the div scroll out
         start: "top top", //animation starts at the top of .scroll-out div
-        scrub: "true", //animation depending on the scroll
+        scrub: "true", //animation smoothly catch up to the scroll progress in that section https://gsap.com/docs/v3/Plugins/ScrollTrigger/?page=1
         end: "bottom top", //increasing distance for smoother animation
     }
 });
@@ -40,30 +40,16 @@ let continent = document.getElementById("africa-svg");
 
 let mmSmall = gsap.matchMedia();
 mmSmall.add("(max-width: 767px)", () =>{ //matching first media query
-gsap.set(continent, { attr: { viewBox: "460 350 100 100" } }); 
+gsap.set(continent, { attr: { viewBox: "460 350 100 100" } }); //modified the viewbox properties until I was satisfied with its display
 });
 
 let mmMediumOne = gsap.matchMedia();
-mmMediumOne.add("(min-width: 768px)", () =>{  //matching second media query
+mmMediumOne.add("(min-width: 768px) and (max-width: 1024px)", () =>{  //matching second media query
 gsap.set(continent, { attr: { viewBox: "460 350 120 120" } }); 
 });
 
-let mmLarge = gsap.matchMedia();
-mmLarge.add("(min-width: 1200px)", () =>{ //matching fourth media query
-gsap.set(continent, { attr: { viewBox: "440 380 200 200" } }); 
-gsap.to(continent, { //Changing the SVG view on scroll using GSAP scrolltrigger
-    attr: { viewBox: "570 470 1 1" }, //The target viewbox after animation, different for each media query as effect needs to take into consideration the screen size
-    scrollTrigger: {
-        trigger: '.scroll-out',
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-    }
-});
-});
-
-let mmMediumTwo = gsap.matchMedia();
-mmMediumTwo.add("(min-width: 1024px)", () =>{ //matching third media query
+let mmMedium =gsap.matchMedia();
+mmMedium.add("(min-width: 1024px) and (max-width: 1199px)", () =>{
 gsap.set(continent, { attr: { viewBox: "460 350 120 120" } }); 
 gsap.to(continent, { 
     attr: { viewBox: "550 400 1 1" },
@@ -74,6 +60,25 @@ gsap.to(continent, {
         scrub: true,
     }
 });
+});
+
+let mmLarge = gsap.matchMedia();
+mmLarge.add("(min-width: 1200px)", () =>{ //matching fourth media query
+gsap.set(continent, { attr: { viewBox: "440 360 200 200" } }); 
+gsap.to(continent, { //Changing the SVG view on scroll using GSAP scrolltrigger
+    attr: { viewBox: "570 470 1 1" }, //The target viewbox after animation, different for each media query as effect needs to take into consideration the screen size
+    scrollTrigger: {
+        trigger: '.scroll-out',
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        anticipatePin: 1,
+    }
+});
+});
+
+let mmMediumTwo = gsap.matchMedia();
+mmMediumTwo.add("(min-width: 1024px)", () =>{ //matching third media query, within this match media, which includes all screens above 1024px, I have added all my animations. This is because they depend on screen size, positioning of elements, and the animations would overload the smaller screens, see report.
 
 /*Introduction paragraph and footprints*/
 gsap.set("#ff-svg, #fs-svg, #ft-svg, #fl-svg, #pf-svg", { //resizing and rotating fottprints
@@ -87,11 +92,12 @@ gsap.timeline({ //timeline for this section, triggered by section with id=zero
         start: 'top top', 
         end: '+=100%', 
         scrub: true,   
-        pin: true, // Pinning the element '#zero' when the trigger starts and unpins when the trigger ends (element is fixed during the scroll range)
+        pin: true, // Pinning the element '#zero' when the trigger starts and unpins when the trigger ends (element is in fixed position during the scroll range)
+        anticipatePin: 1, //this helps make transitions into and out of pinned state smoother. As I have a long scrolling narrative, this helps mainting a fluid scrolling/pinning avoiding jumps https://gsap.com/community/forums/topic/26335-scrolltrigger-pin-jumpssnaps-on-triggering/
     }
 })
 .from("#ff-svg", { 
-    autoAlpha: 0,  //Footprints start from an invisible state 
+    autoAlpha: 0,  //Both visibility and opacity are set at 0, meaning the svg starts from that states before beeing fully visible and opaque on scroll https://gsap.com/community/forums/topic/15361-understanding-autoalpha/
     ease: "none", //Linear animation, no easing
     duration: 1,
 })
@@ -125,14 +131,14 @@ let timelineOne = gsap.timeline({ //creating timeline to coordinate all elements
       end: 'top top',
       scrub: true,
       pin: true,
-      anticipatePin: 3,
+      anticipatePin: 1,
     }
 });
 
 timelineOne.from("#gnu",{
   autoAlpha: 0, 
   ease: "none",
-}, "start"); //
+}, "start");
 
 timelineOne.from("#mum",{
   autoAlpha: 0, 
@@ -174,7 +180,7 @@ let timelineTwo = gsap.timeline({
       end: 'top center', 
       scrub: true,   
       pin: true,
-      anticipatePin: 3
+      anticipatePin: 1,
     }
 });
 
@@ -235,6 +241,7 @@ let timelineThree = gsap.timeline({
       end: 'top center', 
       scrub: true,   
       pin: true,
+      anticipatePin: 1,
     }
 });
   
@@ -254,7 +261,8 @@ gsap.from("#plain",{
       start: 'top top', 
       endTrigger: '#paragraph-5',
       end: 'bottom top', 
-      scrub: true,   
+      scrub: true, 
+      anticipatePin: 1,  
     }
 });
 
@@ -275,7 +283,7 @@ let timelineFour = gsap.timeline({
     end: 'top top', 
     scrub: true, 
     pin: true,
-    anticipatePin: 5,
+    anticipatePin: 1,
     }
 });
 
@@ -354,6 +362,7 @@ let timelineSix = gsap.timeline({
       end: 'top top', 
       scrub: true, 
       pin: true,
+      anticipatePin: 1,
     }
 });
   
@@ -379,6 +388,7 @@ let timelineSeven = gsap.timeline({
       end: '+=1000px', 
       scrub: true, 
       pin: true,
+      anticipatePin: 1,
     }
 });
   
