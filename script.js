@@ -3,27 +3,21 @@ gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(TextPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
-//Creating a function that modifies the viewbox of arrow svg depending on the media query as different css positioning was not working
+//Creating a function that adjusts the viewbox of arrow svg depending on the media query as different css positioning was not working
 function adjustSVG() {
-
 let width = window.innerWidth;
 let arrow = document.getElementById('arrow');
-
-if (width < 1024) {
-    arrow.setAttribute('viewBox', '-320 0 42 49');
-} else if (width < 1200) {
-    arrow.setAttribute('viewBox', '-420 0 42 49');
+if (width < 1200) {
+    arrow.setAttribute('viewBox', '-480 0 42 49');
 } else if (width > 1200) {
     arrow.setAttribute('viewBox', '-570 0 42 49');
-} else {
-    arrow.setAttribute('viewBox', '-150 0 42 49');
 }
 };
-
 window.onload = adjustSVG;
 window.onresize = adjustSVG;
 
 /*Animation for Titles: https://gsap.com/community/forums/topic/35469-making-a-timeline-with-scrolltrigger/*/
+/*As relatively simple animation, this is common to all media queries */
 gsap.to(".scroll-out", {
     x: () => window.innerWidth + 100, //Function pushing the div 100px to the right
     scrollTrigger:{ //method to make the animation depending on scroll
@@ -31,54 +25,28 @@ gsap.to(".scroll-out", {
         start: "top top", //animation starts at the top of .scroll-out div
         scrub: "true", //animation smoothly catch up to the scroll progress in that section https://gsap.com/docs/v3/Plugins/ScrollTrigger/?page=1
         end: "bottom top", //increasing distance for smoother animation
+        anticipatePin: 1, //this helps make transitions into and out of pinned state smoother. As I have a long scrolling narrative, this helps mainting a fluid scrolling/pinning avoiding jumps https://gsap.com/community/forums/topic/26335-scrolltrigger-pin-jumpssnaps-on-triggering/
     }
 });
 
 
-//Setting viewBox and creating the animation for the continent zoom depending on the media query, used https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/
+//Animation for screens above 1024px, used https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/
+let mm = gsap.matchMedia();
+mm.add("(min-width: 1025px) and (orientation: landscape)", () =>{ //Within this match media, which includes all screens above 1024px, I have added all my animations. This is because they depend on screen size, positioning of elements, and the animations would overload the smaller screens, see report.
+
 let continent = document.getElementById("africa-svg");
-
-let mmSmall = gsap.matchMedia();
-mmSmall.add("(max-width: 767px)", () =>{ //matching first media query
-gsap.set(continent, { attr: { viewBox: "460 350 100 100" } }); //modified the viewbox properties until I was satisfied with its display
-});
-
-let mmMediumOne = gsap.matchMedia();
-mmMediumOne.add("(min-width: 768px) and (max-width: 1024px)", () =>{  //matching second media query
-gsap.set(continent, { attr: { viewBox: "460 350 120 120" } }); 
-});
-
-let mmMedium =gsap.matchMedia();
-mmMedium.add("(min-width: 1024px) and (max-width: 1199px)", () =>{
-gsap.set(continent, { attr: { viewBox: "460 350 120 120" } }); 
-gsap.to(continent, { 
-    attr: { viewBox: "550 400 1 1" },
-    scrollTrigger: {
-        trigger: '.scroll-out',
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-    }
-});
-});
-
-let mmLarge = gsap.matchMedia();
-mmLarge.add("(min-width: 1200px)", () =>{ //matching fourth media query
-gsap.set(continent, { attr: { viewBox: "440 360 200 200" } }); 
+gsap.set(continent, { attr: { viewBox: "460 390 210 210" } }); //Using gsap to immedialty apply viewbox properties to the SVG
 gsap.to(continent, { //Changing the SVG view on scroll using GSAP scrolltrigger
-    attr: { viewBox: "570 470 1 1" }, //The target viewbox after animation, different for each media query as effect needs to take into consideration the screen size
+    attr: { viewBox: "510 420 1 1" }, //The target viewbox after animation
     scrollTrigger: {
         trigger: '.scroll-out',
         start: "top top",
         end: "bottom top",
         scrub: true,
-        anticipatePin: 1,
+        anticipatePin: 1, 
     }
 });
-});
 
-let mmMediumTwo = gsap.matchMedia();
-mmMediumTwo.add("(min-width: 1024px)", () =>{ //matching third media query, within this match media, which includes all screens above 1024px, I have added all my animations. This is because they depend on screen size, positioning of elements, and the animations would overload the smaller screens, see report.
 
 /*Introduction paragraph and footprints*/
 gsap.set("#ff-svg, #fs-svg, #ft-svg, #fl-svg, #pf-svg", { //resizing and rotating fottprints
@@ -86,15 +54,15 @@ gsap.set("#ff-svg, #fs-svg, #ft-svg, #fl-svg, #pf-svg", { //resizing and rotatin
     rotate: 150,
 });
 
-gsap.timeline({ //timeline for this section, triggered by section with id=zero
-    scrollTrigger: {
-        trigger: '#zero',
-        start: 'top top', 
-        end: '+=100%', 
-        scrub: true,   
-        pin: true, // Pinning the element '#zero' when the trigger starts and unpins when the trigger ends (element is in fixed position during the scroll range)
-        anticipatePin: 1, //this helps make transitions into and out of pinned state smoother. As I have a long scrolling narrative, this helps mainting a fluid scrolling/pinning avoiding jumps https://gsap.com/community/forums/topic/26335-scrolltrigger-pin-jumpssnaps-on-triggering/
-    }
+gsap.timeline({ //timeline for this section, triggered by section with id=zero. Each chapter follow the same structure, with a timeline that starts at the corresponding chapter and ends later to give room for the scroll, then each animated elements within the chapter depends on that timeline
+scrollTrigger: {
+    trigger: '#zero',
+    start: 'top top', 
+    end: '+=100%', 
+    scrub: true,   
+    pin: true, // Pinning the element '#zero' when the trigger starts and unpins when the trigger ends (element is in fixed position during the scroll range)
+    anticipatePin: 1, 
+}
 })
 .from("#ff-svg", { 
     autoAlpha: 0,  //Both visibility and opacity are set at 0, meaning the svg starts from that states before beeing fully visible and opaque on scroll https://gsap.com/community/forums/topic/15361-understanding-autoalpha/
@@ -123,7 +91,7 @@ gsap.timeline({ //timeline for this section, triggered by section with id=zero
 });
 
 /*Chapter One */
-let timelineOne = gsap.timeline({ //creating timeline to coordinate all elements in chapter one
+let timelineOne = gsap.timeline({ 
     scrollTrigger: {
       trigger: "#one",
       start: "top top", 
@@ -145,12 +113,12 @@ timelineOne.from("#mum",{
   ease: "none",
 },"start+=1");
 
-timelineOne.fromTo("#paragraph-1", {
-  y: 2000
+timelineOne.fromTo("#paragraph-1", { //Animating the paragraph from a starting position outside the viewport to a dynamic ending postion outside the viewport as well
+  y: 2000 // Starting the animation with '#paragraph-1' positioned 2000 pixels down from its original position
 }, {
-  y: () => -1 * (document.getElementById("paragraph-2").offsetHeight + 400), //
-  ease: "none",
-}, 'start+=1');
+  y: () => -1 * (document.getElementById("paragraph-1").offsetHeight + 400), // Dynamically setting the ending y-position. Moving '#paragraph-1' to a position above its original place by its own height plus an additional 400 pixels for larger screens to ensure it is completly out of the viewport
+  ease: "none", //No easing, linear transition
+}, 'start+=1'); //Delaying the start of the animation by 1sec after the start of the timeline, this way I coordinate how each elements appear in the timeline in relation to each other
 
 timelineOne.fromTo("#paragraph-2", {
   y: 2000
@@ -184,7 +152,7 @@ let timelineTwo = gsap.timeline({
     }
 });
 
-timelineTwo.to(continent,{opacity:0});
+timelineTwo.to(continent,{opacity:0}); //making the africa SVG transparent so other eleemnts and background appear later on
 
 timelineTwo.to("#forest",{
     position: "absolute",
@@ -195,7 +163,7 @@ timelineTwo.to("#forest",{
 timelineTwo.fromTo("#paragraph-3", {
     y: '2000px'
 }, {
-    y: () => -1 * (document.getElementById("paragraph-2").offsetHeight + 500),
+    y: () => -1 * (document.getElementById("paragraph-3").offsetHeight + 500),
     ease: "none",
     duration: 10,
 });
@@ -218,7 +186,7 @@ timelineTwo.to("#acacia",{
 timelineTwo.fromTo("#paragraph-4", {
     y: '2000px'
 }, {
-    y: () => -1 * (document.getElementById("paragraph-2").offsetHeight + 500),
+    y: () => -1 * (document.getElementById("paragraph-4").offsetHeight + 500),
     ease: "none",
     duration: 10,
 });
@@ -248,7 +216,7 @@ let timelineThree = gsap.timeline({
 timelineThree.fromTo("#paragraph-5", {
     y: '2000px'
 }, {
-    y: () => -1 * (document.getElementById("paragraph-2").offsetHeight + 400),
+    y: () => -1 * (document.getElementById("paragraph-5").offsetHeight + 400),
     ease: "none",
     duration: 10,
 });
@@ -307,7 +275,7 @@ timelineFour.fromTo('#cloud-two', {
 timelineFour.fromTo("#paragraph-6", {
     y: '1000px'
 }, {
-    y: () => -1 * (document.getElementById("paragraph-2").offsetHeight + 400),
+    y: () => -1 * (document.getElementById("paragraph-6").offsetHeight + 400),
     ease: "none",
     duration: 5,
 }, "start");
@@ -315,7 +283,7 @@ timelineFour.fromTo("#paragraph-6", {
 timelineFour.fromTo("#paragraph-7", {
     y: '1000px'
 }, {
-    y: () => -1 * (document.getElementById("paragraph-2").offsetHeight + 400),
+    y: () => -1 * (document.getElementById("paragraph-7").offsetHeight + 400),
     ease: "none",
     duration: 5,
 }, "start+=4");
@@ -348,7 +316,7 @@ let timelineFive = gsap.timeline({
 timelineFive.fromTo("#paragraph-8", {
     y: '1000px'
 }, {
-    y: () => -1 * (document.getElementById("paragraph-2").offsetHeight + 400), 
+    y: () => -1 * (document.getElementById("paragraph-8").offsetHeight + 400), 
     ease: "none",
     duration: 4,
 });
@@ -369,7 +337,7 @@ let timelineSix = gsap.timeline({
 timelineSix.fromTo("#paragraph-9", {
     y: '1000px'
 }, {
-    y: () => -1 * (document.getElementById("paragraph-2").offsetHeight + 400), 
+    y: () => -1 * (document.getElementById("paragraph-9").offsetHeight + 400), 
     ease: "none",
     duration: 5,
 }, "start");
@@ -413,7 +381,7 @@ timelineSeven.from('#gnu-two',{
 timelineSeven.fromTo("#paragraph-10", {
     y: '2000px'
 }, {
-    y: () =>  -1 * (document.getElementById("paragraph-2").offsetHeight + 400), 
+    y: () =>  -1 * (document.getElementById("paragraph-10").offsetHeight + 400), 
     ease: "none",
     duration: 10,
   });
