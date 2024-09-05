@@ -2,7 +2,7 @@
 
 # BE WILD: An interactive digital story on the great migrations
 
-##Table of Contents
+## Table of Contents
 * [General Information](#general-information)
 * [File Content](#file-content)
 * [Technologies Used](#technologies-used)
