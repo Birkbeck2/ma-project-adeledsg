@@ -29,7 +29,7 @@
             <div class="svg-container">
                 <svg version="1.1" id="africa-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-title map-desc"> <!--Map free of use for non-commercial purpose from https://www.amcharts.com/svg-maps/?map=africa-->
                     <title id="map-title">Map of Africa</title>
-                    <desc id="map-desc">A map of the African continent used to illustrate where the Great Migrations take place</desc> <!--Using ARIA to enhance SVG accessibility https://www.tpgi.com/using-aria-enhance-svg-accessibility/-->
+                    <desc id="map-desc">A map of the African continent used to illustrate where the Great Migrations take place</desc> <!--Using ARIA to enhance SVG accessibility, SVG possesses title and desc attributes so refering to those with arialabbeledby https://www.tpgi.com/using-aria-enhance-svg-accessibility/-->
                     <g>
                         <path id="AO" class="land" d="M521.03,479.78l0.69,2.09l0.8,1.68l0.64,0.91l1.07,1.47l1.85,-0.23l0.93,-0.4l1.55,0.4l0.42,-0.7l0.7,-1.64l1.74,-0.11l0.15,-0.49l1.43,-0.01l-0.24,1.01l3.4,-0.02l0.05,1.77l0.57,1.09l-0.41,1.7l0.21,1.74l0.94,1.05l-0.15,3.37l0.69,-0.26l1.22,0.07l1.74,-0.42l1.28,0.17l0.3,0.88l-0.32,1.38l0.49,1.34l-0.42,1.07l0.24,0.99l-5.84,-0.04l-0.13,9.16l1.89,2.38l1.83,1.82l-5.15,1.19l-6.79,-0.41l-1.94,-1.4l-11.37,0.13l-0.42,0.21l-1.67,-1.32l-1.82,-0.09l-1.68,0.5l-1.35,0.56l-0.26,-1.83l0.39,-2.55l0.97,-2.65l0.15,-1.24l0.91,-2.59l0.67,-1.17l1.61,-1.87l0.9,-1.27l0.29,-2.11l-0.15,-1.61l-0.84,-1.01l-0.75,-1.72l-0.69,-1.69l0.15,-0.59l0.86,-1.12l-0.85,-2.72l-0.57,-1.88l-1.4,-1.77l0.27,-0.54l1.16,-0.38l0.81,0.05l0.98,-0.34L521.03,479.78zM510.12,479.24l-0.71,0.3l-0.75,-2.1l1.13,-1.21l0.85,-0.47l1.05,0.96l-1.02,0.59l-0.46,0.72L510.12,479.24z"/>
                         <path id="BF" class="land" d="M467.33,436.4L465.41,435.67L464.09,435.78L463.11,436.49L461.85,435.89L461.36,434.96L460.1,434.34L459.91,432.7L460.68,431.49L460.61,430.53L462.84,428.17L463.25,426.21L464.02,425.51L465.38,425.89L466.55,425.31L466.93,424.57L469.11,423.29L469.64,422.39L472.26,421.19L473.81,420.78L474.51,421.33L476.3,421.32L476.08,422.72L476.46,424.03L478.04,425.9L478.12,427.28L481.36,427.93L481.29,429.88L480.68,430.74L479.31,431L478.74,432.24L477.78,432.56L475.32,432.5L474.02,432.28L473.12,432.74L471.88,432.53L467.01,432.66L466.94,434.27z"/>
@@ -90,7 +90,12 @@
             <p id="paragraph-0">Every year, hundreds of thousands of wildebeest migrate from the southern short-grass plains of the Serengeti to the northern woodlands of the Mara. Accompanied by a host of companions, the animals move in a perpetual circular motion in search of fresh grazing and water. Yet, the pursuit of greener pastures does not come without its danger and challenges. Delve into the extraordinary journey that is the Great Migration, one of Nature’s Seven Wonders, by following Gnu, a young wildebeest on his very first migration.</p>
         </div>
 
-        <div class="footprints" role="group" aria-label="Five footprints fading into the screen to represent the wildebeest migrations"> <!--Indicating assistive technologies that this is a group of related elements and describing them https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/group_role-->
+        <div aria-describedby="description-first" class="hidden"> <!--Instead of describing each svg in this context as they are the same, I provide a small description of the overall visual/aniamtion using aria-desscribedby. This description is only meant for screen readers, as I cant use the hidden attribute as this hides it for all users I instead used css to hide it only visually https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby-->
+            Five footprints fading into the screen to represent the wildebeest migrations.
+        </div>
+
+        <div class="footprints" aria-describedby="description-first">
+
             <svg id="ff-svg" width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation">
                 <path d="M5.48328 7.59802C5.57855 7.88384 6.40971 10.189 6.50763 10.9724C6.62814 11.9364 7.83326 14.7685 7.773 15.4915C7.773 16.3351 8.38752 19.3083 7.89351 20.1915C7.38483 21.101 5.78456 20.4325 5.12175 19.8902C3.91663 19.2274 2.71567 16.5159 2.22947 15.7326C1.14486 13.9851 0 12.4411 0 10.6108C0 8.7805 0.69866 5.24805 2.22947 5.24805C3.76027 5.24805 5.24226 6.87495 5.48328 7.59802Z" fill="#303032"/>
                 <path d="M6.3148 5.58317C6.36644 5.91293 6.72628 8.59949 7.01513 9.43301C7.37063 10.4589 8.2235 14.2109 8.43765 15.0097C8.82606 16.0788 9.31379 19.0299 10.1851 19.7097C11.0822 20.4096 12.1098 18.9866 12.6556 18.143C13.4242 16.9548 13.1078 13.402 13.1694 12.4014C13.307 10.1693 13.5968 8.11677 12.7154 6.26761C11.834 4.41845 9.50214 1.15023 8.12029 1.80892C6.73844 2.4676 6.18415 4.74894 6.3148 5.58317Z" fill="#303032"/>
@@ -271,8 +276,12 @@
         <p id="paragraph-6">Stricken with grief but driven by the need to survive, Gnu and the herd press forward. Deep into the Togoro plains, Gnu’s sorrow matures into a quiet contemplation. He no longer longs for adventure, now painfully aware of the grave risks. He struggles to find meaning and hope to his journey. Though filled with excitement and beauty at first, his march now unfolds under a shadow of vulnerability and fear.</p>
         
         <p id="paragraph-7">As the weeks roll into months, Gnu finds solace and comfort in the camaraderie of his fellow travellers. The long walks, shared meals, and hardship has deepened their connections, bridging Gnu thoughts from solitude to solidarity. Around him, he realises that others echo similar feelings of uncertainty and doubts. In the camaraderie of his peers, Gnu realises that is not alone in his fears or dreams and finds glimpses of peace.</p>
-    
-        <div id="clouds" role="group" aria-label="Clouds moving horizontally across the screen representing time moving">
+        
+        <div id="description-four" class="hidden">
+            Clouds moving horizontally across the screen representing time moving.
+        </div>
+
+        <div id="clouds" aria-describedby="description-four">
             <svg id="cloud-one" width="769" height="293" viewBox="0 0 769 293" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation">
                 <path d="M79.4922 210.045C35.2121 210.045 0 203.734 0 232.402C34.8588 250.288 82.8289 250.052 102.457 247.699C132.487 239.266 189.25 227.459 176.06 247.699C159.573 272.997 344.466 232.402 387.451 232.402H568.811C597.075 232.402 680.688 257.7 743.105 247.699C805.521 237.697 736.627 200.626 727.795 189.448C718.963 178.269 684.81 151.794 706.008 142.38C727.206 132.966 706.401 84.138 706.008 60.0159C680.688 21.1854 657.96 53.1918 630.638 21.1854C596.486 -18.8225 548.202 7.65343 540.547 21.1854C532.892 34.7174 491.085 20.5971 471.065 21.1854C451.044 21.7738 449.604 46.4155 445.156 48.8377C432.202 55.8929 387.451 32.3591 374.496 55.8929C363.997 74.9671 382.74 72.9599 344.466 92.3753C313.847 107.908 321.502 141.208 329.156 155.917C337.989 164.546 350.354 181.804 329.156 181.804C302.659 181.804 263.207 165.919 219.045 181.804C174.883 197.689 134.842 210.045 79.4922 210.045Z" fill="#CCCCCC"/>
                 <path d="M398.475 229.461C378.773 235.015 366.68 250.075 370.806 258.297C374.932 266.519 460.452 269.455 508.754 269.455C556.632 269.455 558.823 279.379 598.91 288.188C630.98 295.236 661.4 296.257 687.928 279.379C701.489 258.671 693.236 256.168 701.489 236.354C712.68 209.489 707.974 188.785 676.729 177.039C666.904 175.865 667.701 180.151 661.4 170.734C653.148 158.401 630.155 143.131 611.29 158.401C592.426 173.67 567.666 174.257 543.495 170.734C519.325 167.21 503.447 170.734 480.418 197.808C466.878 213.725 463.912 213.884 451.532 221.673C439.152 229.461 429.721 220.652 398.475 229.461Z" fill="white"/>
@@ -354,8 +363,13 @@
     
     </div>
 
-    <div class="chapter" id="five" role="group" aria-label="Waves moving horizontally back and forth at the bottom of the screen">
-        <div id="waves" >
+    <div class="chapter" id="five"
+    >
+        <div id="description-five" class="hidden">
+            Waves moving horizontally back and forth at the bottom of the screen
+        </div>
+
+        <div id="waves" aria-describedby="description-five">
             <svg id="wave-one" width="1512" height="466" viewBox="0 -50 1512 466" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation"> <!--Modified min-y to adjust the height of each svg-->
                 <path d="M324.009 293.429C228.554 287.535 58.23 328.165 -15 349.216V475H1530V299.745C1527.95 312.902 1456.77 332.375 1441.41 342.375C1426.04 352.374 1400.44 356.058 1375.86 324.481C1351.28 292.903 1413.75 293.429 1461.38 251.326C1509 209.223 1473.16 205.012 1461.38 214.486C1449.6 223.959 1408.63 270.273 1392.76 270.273C1376.88 270.273 1375.86 249.221 1340.01 270.273C1304.16 291.325 1281.63 290.272 1292.39 270.273C1303.14 250.274 1329.26 212.907 1281.63 227.643C1234.01 242.379 1244.25 205.012 1243.23 196.592C1242.2 188.171 1264.73 166.593 1292.39 153.962C1320.04 141.331 1294.43 132.91 1281.63 137.648C1268.83 142.385 1244.25 169.225 1226.84 153.962C1209.43 138.7 1220.69 122.385 1213.01 113.964C1205.33 105.544 1188.94 124.49 1193.04 161.33C1197.14 198.171 1172.56 188.697 1160.27 181.856C1147.97 175.014 1163.34 147.12 1152.07 153.962C1140.81 160.804 1149 148.173 1160.27 105.017C1171.53 61.8611 1135.17 93.9654 1139.27 101.333C1143.37 108.701 1134.15 125.542 1130.05 161.33C1125.95 197.118 1114.69 193.434 1112.64 196.592C1110.59 199.749 1051.19 202.381 1044.02 140.805C1036.85 79.229 1005.1 72.3869 995.37 70.808C985.64 69.2292 957.474 80.2813 946.208 52.3878C934.942 24.4944 931.869 6.07411 923.676 5.02153C915.482 3.96895 932.894 41.8619 920.603 41.3357C908.313 40.8094 903.192 39.7568 923.676 64.4925C944.16 89.2282 915.482 93.9654 908.825 88.7019C902.168 83.4384 895.51 58.7033 890.39 64.4925C885.285 70.2632 877.127 67.1438 855.266 58.7839L855.055 58.7033C833.034 50.2829 833.547 43.4405 808.454 17.1259C783.361 -9.18863 781.825 20.81 782.337 24.494C782.849 28.1781 790.018 66.5974 760.317 67.1236C730.615 67.6499 720.373 78.1758 708.595 91.3331C696.816 104.49 715.252 124.49 743.417 98.702C771.583 72.9137 778.752 90.2813 776.192 93.9654C773.631 97.6494 738.808 110.807 751.611 113.964C764.413 117.122 762.877 133.964 760.317 137.648C757.756 141.332 738.808 146.594 708.595 140.805C678.381 135.016 684.014 169.225 689.135 178.698C694.256 188.171 689.135 198.697 681.453 205.012C673.772 211.327 657.897 188.171 623.074 205.012C588.252 221.853 628.195 255.01 633.828 244.484C639.461 233.959 661.482 238.168 684.014 238.168C706.546 238.168 699.889 276.062 681.453 270.273C663.018 264.483 667.115 276.062 657.897 284.483C648.679 292.903 673.26 305.534 673.26 310.797C673.26 316.06 650.215 332.375 673.26 337.638C696.304 342.901 689.135 301.324 694.256 301.324C699.377 301.324 718.837 298.692 715.252 270.273C711.667 241.853 727.542 253.958 729.591 255.01C731.639 256.063 731.639 269.746 727.542 276.062C723.445 282.377 714.74 322.376 738.808 324.481C758.063 326.165 756.732 304.482 753.659 293.429C741.028 275.009 727.337 231.537 773.631 205.012C831.498 171.856 882.708 212.38 898.583 238.168C914.458 263.957 935.454 345.006 870.418 367.11C805.381 389.214 750.587 383.425 689.135 367.11C627.683 350.795 443.328 300.798 324.009 293.429Z" fill="#569CDB" stroke="#0159A9" stroke-width="10" stroke-linecap="round"/>
             </svg>
@@ -378,9 +392,9 @@
         <img id="jump" src="assets/jump.png" width="2224" height="1668" alt="Gnu jumps acrross the Mara River">
     </div>
 
-    <div class="chapter" id="seven" aria-labelledby="description-id">
+    <div class="chapter" id="seven" aria-describedby="description-final">
     
-        <div id="description-id" hidden>
+        <div id="description-final" class="hidden"> 
             This final illustration incorporates a number of visual elements presented earlier during Gnu's journey.
             Gnu stands in the centre, at the top of a plain, with his mother, the zebra and the gazelle behind him, surrounded by boabab trees, waves and plants.
             Each element appears one after the other, symbolising the fact that Gnu has found his place.
@@ -551,12 +565,12 @@
         <p id="paragraph-11">The End</p>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/TextPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollToPlugin.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script> 
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script> <!--GSAP plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script> <!--GSAP ScrollTrigger plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/TextPlugin.min.js"></script> <!--GSAP Text plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollToPlugin.min.js"></script> <!--GSAP ScrollTo plugin-->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script> <!--P5 library-->
+    <script src="script.js"></script> <!--Custom Script-->
 
     </body>
     

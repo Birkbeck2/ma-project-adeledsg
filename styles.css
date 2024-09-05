@@ -20,10 +20,24 @@ html::-webkit-scrollbar {
 p{
     font-family: 'inter', 'sans-serif';
 }
+.hidden{ /*making the descriptions in html only accessible to screen readers, not visually apparent https://webaim.org/techniques/css/invisiblecontent/*/
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    left: -10000px;
+    top: auto;
+}
 
-@media only screen and (max-width: 1024px) and (orientation: landscape){
+/*Considerations about media queries: The following 4 media queries were selected for the following reasons
+- I wanted to ensure that Be Wild was accessible on all types of screens
+- However, the experience is meant for large screens, typically on landscape mode (animations and element positioning playing a significant role).
+- As such, there is a "reading mode" provided for all smaller devices (below 1024px when in landscape) and for portrait mode.
 
-#indication{ /*In this media query as well as the last one (portrait), a lot of  the elements are in an invisibly state as the experience delivered is not the same as the main one for larger screens in  landscape mode see report */
+*/
+@media only screen and (max-width: 1024px) and (orientation: landscape){ /*In this media query as well as the last one (portrait), a lot of  the elements are in an invisibly state as the experience delivered is not the same as the main one for larger screens in  landscape mode see report */
+
+#indication{ 
     display: none;
 }
 .landing{
@@ -152,12 +166,12 @@ p{
     font-family: 'Tweaked', sans-serif;                                                        
     position: relative;
     text-transform: uppercase;
-    font-size: 4rem; /*Setting all font size in relation to the font size defined in the root element*/
+    font-size: 4rem; 
     color: rgba(178, 198, 255, 1);
 }
 }
 
-@media only screen and (min-width: 1025px) and (orientation: landscape){
+@media only screen and (min-width: 1025px) and (orientation: landscape){ /*Main experience*/
 .scroll-out{
     padding-right: 8%;
     padding-top: 8%;
@@ -325,12 +339,12 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2.5;
+    line-height: 2;
     position: relative;
     color: rgba(48, 48, 50, 1);
     background-color: rgba(221, 221, 221, 0.6);
     display: inline-block;
-    width: 50%;
+    width: 60%;
     z-index: 11;
 }
 #paragraph-2{
@@ -338,11 +352,11 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2.5;
+    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
     background-color: rgba(221, 221, 221, 0.6);
-    width: 50%;
+    width: 60%;
     z-index: 12;
 }
 .container{
@@ -430,12 +444,12 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2.5;
+    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
     background-color: rgba(221, 221, 221, 0.6);
     z-index: 10;
-    width: 50%;
+    width: 60%;
 }
 #trees{
     position: absolute;
@@ -479,12 +493,12 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2.5;
+    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
     background-color: rgba(221, 221, 221, 0.6);
     z-index: 10;
-    width: 50%;
+    width: 60%;
 }
 #blood{
     display: block;
@@ -516,18 +530,19 @@ p{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 #paragraph-5{
     padding-right: 2%;
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2.5;
+    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
     background-color: rgba(221, 221, 221, 0.6);
     z-index: 11;
-    width: 50%;
+    width: 60%;
 }
 #death{
     width: 100vw;
@@ -564,12 +579,12 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2.5;
+    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
     background-color: rgba(221, 221, 221, 0.6);
     z-index: 10;
-    width: 50%;
+    width: 60%;
 }
 #clouds{
     display: block;
@@ -599,12 +614,12 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2.5;
+    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
     background-color: rgba(221, 221, 221, 0.6);
     z-index: 10;
-    width: 50%;
+    width: 60%;
 }
 
 /*Chapter 5*/
@@ -671,12 +686,12 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2.5;
+    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
     background-color: rgba(221, 221, 221, 0.6);
     z-index: 10;
-    width: 50%;
+    width: 60%;
 }
 /*Chapter Six*/
 #six{
@@ -693,12 +708,12 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2.5;
+    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
     background-color: rgba(221, 221, 221, 0.6);
     z-index: 10;
-    width: 50%;
+    width: 60%;
 }
 #jump{
     width: auto;
@@ -848,12 +863,12 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2.5;
+    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
     background-color: rgba(221, 221, 221, 0.6);
     z-index: 10;
-    width: 50%;
+    width: 60%;
 }
 /*End*/
 #end{

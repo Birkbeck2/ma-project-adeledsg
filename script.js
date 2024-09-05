@@ -138,6 +138,60 @@ timelineOne.from("#zebra",{
 },"start+=1.4");
 
 
+let sketch = function(p) { //Creating a rain transition. To do so, I am creating a function that takes a p5 instance to seperate from the global name space and thus other libraries https://www.youtube.com/watch?v=Su792jEauZg. This video https://www.youtube.com/watch?v=YQysSfaLDyo helped me create the rain object and then I modified variables to display it differently visually and incorporate GSAP elements
+    let rains = []; //array holding the rain objects declared in the rain class below
+
+    p.setup = function() { //the set up function allows me to create the canvas element and initialise all variables https://p5js.org/reference/p5/setup/, this function runs once when the sktech starts.
+        let canvas = p.createCanvas(p.windowWidth, p.windowHeight +10 ); //Creating the canvas and asssigning its width to match the width of the viewport and the hieght to be the same as the viewport but with an extra 10px to smooth the colour transition with the next chapter
+        canvas.id("myCanvas"); //assigning id name to help with manipulating the canvas with GSAP
+        canvas.parent('sketch-holder'); //assigning the 'sketch-holder div' as the parent element of the canvas https://p5js.org/reference/p5.Element/parent/
+        p.background(48, 48, 50); //setting the background colour, same as next chapter for the transition
+        canvas.style('opacity', '0'); //initailly setting the canvas to be fully transparent
+
+        timelineOne.to('#myCanvas', { //animating canvas on the same timeline as zebra, gzaelle, gnu, etc. It will become fully opaque, hiding all elements and starts 2sec after the timeline so 0.4 sec after paragraph-2
+            opacity: 1 
+        }, "start+=2");
+    };
+  
+    p.draw = function() { //the draw function, all code here runs repeatadly as a loop
+        p.background(48, 48, 50); //the background needs to be declared again as it runs in a loop, it is reset at every frame, illusion of drops of rain instead of lines
+        for (let r of rains) { // Iterating over all rain objects created below in the array and calling their show and update methods.
+            r.show();
+            r.update();
+        }
+
+        if (rains.length < 500) {  // Continuously pushing rain objects into the array until there are 500 on the screen.
+            rains.push(new Rain(p.random(p.width), 0));
+        }
+    };
+  
+    class Rain { //class declaration, creating rain objects https://p5js.org/reference/p5/class/ and https://www.youtube.com/watch?v=YQysSfaLDyo 
+        constructor(x, y) { //creating the Rain object
+            this.pos = p.createVector(x, y); //assigning inital position of the vector using p5 createvector for x and y coordinates https://p5js.org/reference/p5/createVector/
+            this.vel = p.createVector(0, p.random(1, 5)); //the instance vel property is set in a downward direction (from 0 to a random position between 1 and 5)
+            this.len = p.random(10, 20); //randomly setting a lenght between 10 and 20 px
+            this.opa = p.random(1, 255); //assigning a random number for the opacity between 0 minimum opacity so transparent and 255, maximum level of opacity.
+        }
+  
+        show() { //method to display the raindrops
+            p.stroke(221, 221, 221, this.opa); //setting the stroke color and its opacity defined randomly above
+            p.line(this.pos.x, this.pos.y, this.pos.x, this.pos.y - this.len); //drawing the rain drops as a line. 
+        }
+  
+        update() { // Method to update the raindrop's position.
+            this.pos.add(this.vel); // Moving the raindrop by its velocity
+            if (this.pos.y > p.height + 50) {  // Checking if the raindrop has moved beyond the canvas height and removing it from the array if so to avoid lagging.
+                let index = rains.indexOf(this);
+                if (index > -1) {
+                    rains.splice(index, 1);
+                }
+            }
+        }
+    }
+};
+
+new p5(sketch); // Instantiating the sketch by passing the defined function to the p5 constructor.
+
 
 /*Chapter 2*/
 let timelineTwo = gsap.timeline({
@@ -163,7 +217,7 @@ timelineTwo.to("#forest",{
 timelineTwo.fromTo("#paragraph-3", {
     y: '2000px'
 }, {
-    y: () => -1 * (document.getElementById("paragraph-3").offsetHeight + 500),
+    y: () => -1 * (document.getElementById("paragraph-3").offsetHeight + 600),
     ease: "none",
     duration: 10,
 });
@@ -186,7 +240,7 @@ timelineTwo.to("#acacia",{
 timelineTwo.fromTo("#paragraph-4", {
     y: '2000px'
 }, {
-    y: () => -1 * (document.getElementById("paragraph-4").offsetHeight + 500),
+    y: () => -1 * (document.getElementById("paragraph-4").offsetHeight + 600),
     ease: "none",
     duration: 10,
 });
