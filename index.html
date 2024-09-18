@@ -3,16 +3,24 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <Title>Be Wild</Title>
-        <meta name="description" content="Explore 'Be Wild,' an interactive digital story inspired by the great migrations. Follow a young wildebeest navigating the challenges of migration and belongings. This immersive narrative for Tweens combines animations and interactive elements."> <!--Implemented this meta tag after checking lighthouse report on SEO https://developer.chrome.com/docs/lighthouse/seo/meta-description/?utm_source=lighthouse&utm_medium=lr-->
+        <title>Be Wild</title>
+        <meta name="description" content="Explore 'Be Wild,' an interactive digital story inspired by the great migrations. Follow a young wildebeest navigating the challenges of migration and belongings. This immersive narrative for Tweens combines animations and interactive elements.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="preload" href="https://use.typekit.net/dtz5res.css" as="style">
-        <link rel="stylesheet" href="https://use.typekit.net/dtz5res.css">
+    
+        <!-- Preload and asynchronously load Adobe Typekit fonts -->
+        <link rel="preload" href="https://use.typekit.net/dtz5res.css" as="style" onload="this.rel='stylesheet'">
+        <link href="https://use.typekit.net/dtz5res.css" rel="stylesheet" media="print" onload="this.media='all'">
+    
+        <!-- Preload and asynchronously load Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" as="style" onload="this.rel='stylesheet'">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+        <!-- Load the main CSS asynchronously -->
+        <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
     </head>
+    
 
     <body>
 
