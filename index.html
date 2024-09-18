@@ -4,10 +4,10 @@
     <head>
         <meta charset="utf-8">
         <title>Be Wild</title>
-        <meta name="description" content="Explore 'Be Wild,' an interactive digital story inspired by the great migrations. Follow a young wildebeest navigating the challenges of migration and belongings. This immersive narrative for Tweens combines animations and interactive elements.">
+        <meta name="description" content="Explore 'Be Wild,' an interactive digital story inspired by the great migrations. Follow a young wildebeest navigating the challenges of migration and belongings. This immersive narrative for Tweens combines animations and interactive elements."> <!--Implemented this meta tag after checking lighthouse report on SEO https://developer.chrome.com/docs/lighthouse/seo/meta-description/?-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
-        <!-- Preload and asynchronously load Adobe Typekit fonts -->
+        <!-- Preload and asynchronously load Adobe fonts, accessed through subscription -->
         <link rel="preload" href="https://use.typekit.net/dtz5res.css" as="style" onload="this.rel='stylesheet'">
         <link href="https://use.typekit.net/dtz5res.css" rel="stylesheet" media="print" onload="this.media='all'">
     
@@ -101,7 +101,7 @@
             <p id="paragraph-0">Every year, hundreds of thousands of wildebeest migrate from the southern short-grass plains of the Serengeti to the northern woodlands of the Mara. Accompanied by a host of companions, the animals move in a perpetual circular motion in search of fresh grazing and water. Yet, the pursuit of greener pastures does not come without its danger and challenges. Delve into the extraordinary journey that is the Great Migration, one of Nature’s Seven Wonders, by following Gnu, a young wildebeest on his very first migration.</p>
         </div>
 
-        <div aria-describedby="description-first" class="hidden"> <!--Instead of describing each svg in this context as they are the same, I provide a small description of the overall visual/aniamtion using aria-desscribedby. This description is only meant for screen readers, as I cant use the hidden attribute as this hides it for all users I instead used css to hide it only visually https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby-->
+        <div aria-describedby="description-first" class="hidden"> <!--Instead of describing each svg in this context as they are the same, I provide a small description of the overall visual/animation using aria-desscribedby. This description is only meant for screen readers. I cant use the hidden attribute as this hides it for all users, I instead used css to hide it only visually https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby-->
             Five footprints fading into the screen to represent the wildebeest migrations.
         </div>
 
@@ -576,12 +576,12 @@
         <p id="paragraph-11">The End</p>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js" defer></script> <!--GSAP plugin-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js" defer></script> <!--GSAP ScrollTrigger plugin-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/TextPlugin.min.js" defer></script> <!--GSAP Text plugin-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollToPlugin.min.js" defer></script> <!--GSAP ScrollTo plugin-->
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js" defer></script> <!--P5 library-->
-    <script src="script.js" defer></script> <!--Custom Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script> <!--GSAP plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script> <!--GSAP ScrollTrigger plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/TextPlugin.min.js"></script> <!--GSAP Text plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollToPlugin.min.js"></script> <!--GSAP ScrollTo plugin-->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script> <!--P5 library-->
+    <script src="script.js"></script> <!--Custom Script-->
 
     </body>
     
