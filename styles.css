@@ -386,7 +386,7 @@ p{
 #gnu {
     display: block;
     position: absolute;
-    bottom: 0;  
+    bottom: -10%;  
     left: 30%;
     z-index: 10;
     width: 55%;
@@ -395,11 +395,11 @@ p{
 #mum {
     display: block;
     position: absolute;
-    right: 0;
+    right: 5%;
     z-index: 9;
     width: 80%;
     height: auto;
-    bottom: 0;
+    bottom: -10%;
 }
 #zebra{
     display: block;
@@ -435,6 +435,7 @@ p{
     display: block;
     width: 100vw;
     height: 100vh;
+    object-fit: cover;
     opacity: 0;
     z-index: 3;
     position: relative;
@@ -504,6 +505,7 @@ p{
     display: block;
     width: 100vw;
     height: 100vh;
+    object-fit: cover;
     opacity: 0;
     z-index: 20;
     position: absolute;
@@ -531,6 +533,7 @@ p{
     justify-content: center;
     align-items: center;
     text-align: center;
+    max-height: 100vh;
 }
 #paragraph-5{
     padding-right: 2%;
@@ -546,10 +549,12 @@ p{
 }
 #death{
     width: 100vw;
-    height: auto;
+    height: 100vh;
+    object-fit: cover;
     background-color: red;
     top: 0;
     left: 0;
+    right:0;
     z-index: 9;
     position: absolute;
 }
@@ -912,10 +917,10 @@ p{
     font-size: 1.5rem;
 }
 #gnu{
-    bottom: -10%;
+    bottom: -20%;
 }
 #mum{
-    bottom: -15%;
+    bottom: -25%;
 }
 #zebra{
     bottom: -10%;

@@ -32,7 +32,7 @@ gsap.to(".scroll-out", {
 
 //Animation for screens above 1024px, used https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/
 let mm = gsap.matchMedia();
-mm.add("(min-width: 1025px) and (orientation: landscape)", () =>{ //Within this match media, which includes all screens above 1024px, I have added all my animations. This is because they depend on screen size, positioning of elements, and the animations would overload the smaller screens, see report.
+mm.add("(min-width: 1025px) and (orientation: landscape)", () =>{ //Within this match media, which includes all screens above 1024px, I have added all my animations, smaller screens do not have the same css and experience implemented see report.
 
 let continent = document.getElementById("africa-svg");
 gsap.set(continent, { attr: { viewBox: "460 390 210 210" } }); //Using gsap to immedialty apply viewbox properties to the SVG
@@ -95,8 +95,7 @@ let timelineOne = gsap.timeline({
     scrollTrigger: {
       trigger: "#one",
       start: "top top", 
-      endTrigger: '#three',
-      end: 'top top',
+      end: '+=3000',
       scrub: true,
       pin: true,
       anticipatePin: 1,
@@ -106,36 +105,42 @@ let timelineOne = gsap.timeline({
 timelineOne.from("#gnu",{
   autoAlpha: 0, 
   ease: "none",
+  duration: 2,
 }, "start");
 
 timelineOne.from("#mum",{
   autoAlpha: 0, 
   ease: "none",
+  duration: 2,
 },"start+=1");
 
 timelineOne.fromTo("#paragraph-1", { //Animating the paragraph from a starting position outside the viewport to a dynamic ending postion outside the viewport as well
-  y: 2000 // Starting the animation with '#paragraph-1' positioned 2000 pixels down from its original position
+  y: '1000px' // Starting the animation with '#paragraph-1' positioned 1000 pixels down from its original position
 }, {
   y: () => -1 * (document.getElementById("paragraph-1").offsetHeight + 400), // Dynamically setting the ending y-position. Moving '#paragraph-1' to a position above its original place by its own height plus an additional 400 pixels for larger screens to ensure it is completly out of the viewport
-  ease: "none", //No easing, linear transition
-}, 'start+=1'); //Delaying the start of the animation by 1sec after the start of the timeline, this way I coordinate how each elements appear in the timeline in relation to each other
+  ease: "power1.inOut", //
+  duration: 5,
+}, 'start+=1.3'); //Delaying the start of the animation by 1sec after the start of the timeline, this way I coordinate how each elements appear in the timeline in relation to each other
 
 timelineOne.fromTo("#paragraph-2", {
-  y: 2000
+  y: '1000px'
 }, {
   y: () => -1 * (document.getElementById("paragraph-2").offsetHeight + 400), 
-  ease: "none",
-}, 'start+=1.6');
+  ease: "power1.inOut",
+  duration: 5,
+}, 'start+=5');
 
 timelineOne.from("#gazelle",{
   autoAlpha: 0, 
   ease: "none",
-},"start+=1.2");
+  duration: 2,
+},"start+=5.2");
 
 timelineOne.from("#zebra",{
   autoAlpha: 0, 
-  ease: "slow",
-},"start+=1.4");
+  ease: "none",
+  duration: 2,
+},"start+=6");
 
 
 let sketch = function(p) { //Creating a rain transition. To do so, I am creating a function that takes a p5 instance to seperate from the global name space and thus other libraries https://www.youtube.com/watch?v=Su792jEauZg. This video https://www.youtube.com/watch?v=YQysSfaLDyo helped me create the rain object and then I modified variables to display it differently visually and incorporate GSAP elements
@@ -149,8 +154,9 @@ let sketch = function(p) { //Creating a rain transition. To do so, I am creating
         canvas.style('opacity', '0'); //initailly setting the canvas to be fully transparent
 
         timelineOne.to('#myCanvas', { //animating canvas on the same timeline as zebra, gzaelle, gnu, etc. It will become fully opaque, hiding all elements and starts 2sec after the timeline so 0.4 sec after paragraph-2
-            opacity: 1 
-        }, "start+=2");
+            opacity: 1,
+            duration: 5,
+        }, "start+=9");
     };
   
     p.draw = function() { //the draw function, all code here runs repeatadly as a loop
@@ -198,8 +204,7 @@ let timelineTwo = gsap.timeline({
     scrollTrigger: {
       trigger: '#two',
       start: 'top top', 
-      endTrigger: '#five',
-      end: 'top center', 
+      end: '+=3000', 
       scrub: true,   
       pin: true,
       anticipatePin: 1,
@@ -215,10 +220,10 @@ timelineTwo.to("#forest",{
 });
 
 timelineTwo.fromTo("#paragraph-3", {
-    y: '2000px'
+    y: '1000px'
 }, {
     y: () => -1 * (document.getElementById("paragraph-3").offsetHeight + 600),
-    ease: "none",
+    ease: "power1.inOut",
     duration: 10,
 });
 
@@ -238,15 +243,16 @@ timelineTwo.to("#acacia",{
 });
 
 timelineTwo.fromTo("#paragraph-4", {
-    y: '2000px'
+    y: '1000px'
 }, {
     y: () => -1 * (document.getElementById("paragraph-4").offsetHeight + 600),
-    ease: "none",
+    ease: "power1.inOut",
     duration: 10,
 });
 
 timelineTwo.to("#blood",{
   opacity: 1, 
+  duration: 2,
 });
 
 timelineTwo.to("#blood-layer",{
@@ -259,8 +265,7 @@ let timelineThree = gsap.timeline({
     scrollTrigger: {
       trigger: '#three',
       start: 'top top', 
-      endTrigger: '#six',
-      end: 'top center', 
+      end: '+=3000', 
       scrub: true,   
       pin: true,
       anticipatePin: 1,
@@ -268,12 +273,12 @@ let timelineThree = gsap.timeline({
 });
   
 timelineThree.fromTo("#paragraph-5", {
-    y: '2000px'
+    y: '1000px'
 }, {
     y: () => -1 * (document.getElementById("paragraph-5").offsetHeight + 400),
-    ease: "none",
-    duration: 10,
-});
+    ease: "power1.inOut",
+    duration: 8,
+}, "start");
   
 gsap.from("#plain",{
     autoAlpha: 0, 
@@ -286,7 +291,7 @@ gsap.from("#plain",{
       scrub: true, 
       anticipatePin: 1,  
     }
-});
+},"start+=2");
 
 /*Chapter 4 */
 gsap.set('#cloud-one, #cloud-two, #cloud-three', {
@@ -314,7 +319,7 @@ timelineFour.fromTo('#cloud-one, #cloud-three', {
 }, {
     x: '-2000px',
     duration: 10,  
-    immediateRender: false
+    immediateRender: false //
 }, "start"
 );
 
@@ -330,7 +335,7 @@ timelineFour.fromTo("#paragraph-6", {
     y: '1000px'
 }, {
     y: () => -1 * (document.getElementById("paragraph-6").offsetHeight + 400),
-    ease: "none",
+    ease: "power1.inOut",
     duration: 5,
 }, "start");
 
@@ -338,7 +343,7 @@ timelineFour.fromTo("#paragraph-7", {
     y: '1000px'
 }, {
     y: () => -1 * (document.getElementById("paragraph-7").offsetHeight + 400),
-    ease: "none",
+    ease: "power1.inOut",
     duration: 5,
 }, "start+=4");
 
@@ -371,7 +376,7 @@ timelineFive.fromTo("#paragraph-8", {
     y: '1000px'
 }, {
     y: () => -1 * (document.getElementById("paragraph-8").offsetHeight + 400), 
-    ease: "none",
+    ease: "power1.inOut",
     duration: 4,
 });
 
@@ -433,10 +438,10 @@ timelineSeven.from('#gnu-two',{
 }, "start+=9");
   
 timelineSeven.fromTo("#paragraph-10", {
-    y: '2000px'
+    y: '1000px'
 }, {
     y: () =>  -1 * (document.getElementById("paragraph-10").offsetHeight + 400), 
-    ease: "none",
+    ease: "power1.inOut",
     duration: 10,
   });
 });
