@@ -126,17 +126,20 @@ body{
     padding: 5%;
 }
 #title {
-    font-family: 'Tweaked', sans-serif;                                                        
+    font-family: "anodyne", sans-serif;
+    font-weight: 400;
+    font-style: normal;                                                        
     position: relative;
     text-transform: uppercase;
     font-size: 4rem; /*Setting all font size in relation to the font size defined in the root element*/
     color: rgba(178, 198, 255, 1);
 }
 #subtitle {
-    font-family: 'Mynerve', sans-serif;                             
+    font-family: "dreaming-outloud-script", sans-serif;
+    font-weight: 400;
+    font-style: normal;                             
     position: relative;
     color: rgba(178, 198, 255, 1);
-    font-weight: 100;
     font-size: 1.5rem;
 }
 .chapter{
@@ -163,7 +166,9 @@ p{
     padding-bottom: 10%;
 }
 #paragraph-11{
-    font-family: 'Tweaked', sans-serif;                                                        
+    font-family: "anodyne", sans-serif;
+    font-weight: 400;
+    font-style: normal;                                                        
     position: relative;
     text-transform: uppercase;
     font-size: 4rem; 
@@ -179,7 +184,9 @@ p{
     padding-top: 2%;
 }
 #title {
-    font-family: 'Tweaked', sans-serif;                                                        
+    font-family: "anodyne", sans-serif;
+    font-weight: 400;
+    font-style: normal;                                                   
     position: relative;
     text-transform: uppercase;
     font-size: 6rem;
@@ -188,11 +195,12 @@ p{
     font-size: 8rem;
 }
 #subtitle {
-    font-family: 'Mynerve', sans-serif;                             
+    font-family: "dreaming-outloud-script", sans-serif;
+    font-weight: 400;
+    font-style: normal;                          
     position: relative;
     text-align: right;
     color: rgba(204, 204, 204, 1);
-    font-weight: 100;
     font-size: 3rem;
     color: rgba(178, 198, 255, 1);
 }
@@ -211,11 +219,12 @@ p{
     right: 0;
 }
 #indication p {
-    font-family: 'inter', 'sans-serif';
+    font-family: 'Inter', 'sans-serif';
+    font-style: normal;
+    font-weight: 400;
     position: relative;
     text-align: right;
     color: rgba(178, 149, 255, 1);
-    font-weight: 100;
     font-size: 2rem;
     text-transform: uppercase;
     padding-bottom: 2%;
@@ -434,11 +443,12 @@ p{
 #forest{
     display: block;
     width: 100vw;
-    height: 100vh;
+    height: auto;
     object-fit: cover;
     opacity: 0;
     z-index: 3;
-    position: relative;
+    position: absolute;
+    bottom: 0;
 }
 #paragraph-3{
     padding-right: 2%;
@@ -549,12 +559,11 @@ p{
 }
 #death{
     width: 100vw;
-    height: 100vh;
+    height: auto;
     object-fit: cover;
     background-color: red;
     top: 0;
     left: 0;
-    right:0;
     z-index: 9;
     position: absolute;
 }
@@ -890,7 +899,9 @@ p{
     padding-left: 17%;
     position: relative;
     background-color: rgba(196, 217, 119, 1);  
-    font-family: 'Tweaked', sans-serif;                                                        
+    font-family: "anodyne", sans-serif;
+    font-weight: 400;
+    font-style: normal;                                                      
     position: relative;
     text-transform: uppercase;
     font-size: 10rem; /*Setting all font size in relation to the font size defined in the root element*/
@@ -930,6 +941,9 @@ p{
 }
 
 /*Chapter Two*/
+#forest{
+    bottom: 0;
+}
 #paragraph-3{
     font-size: 1.5rem;
 }
@@ -1075,14 +1089,18 @@ body{
     padding: 5%;
 }
 #title {
-    font-family: 'Tweaked', sans-serif;                                                        
+    font-family: "anodyne", sans-serif;
+    font-weight: 400;
+    font-style: normal;                                                       
     position: relative;
     text-transform: uppercase;
     font-size: 4rem; 
     color: rgba(178, 198, 255, 1);
 }
 #subtitle {
-    font-family: 'Mynerve', sans-serif;                             
+    font-family: "dreaming-outloud-script", sans-serif;
+    font-weight: 400;
+    font-style: normal;                             
     position: relative;
     color: rgba(178, 198, 255, 1);
     font-weight: 100;
@@ -1112,7 +1130,9 @@ p{
     padding-bottom: 10%;
 }
 #paragraph-11{
-    font-family: 'Tweaked', sans-serif;                                                        
+    font-family: "anodyne", sans-serif;
+    font-weight: 400;
+    font-style: normal;                                                              
     position: relative;
     text-transform: uppercase;
     font-size: 4rem;
