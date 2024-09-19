@@ -16,11 +16,15 @@ if (width < 1200) {
 window.onload = adjustSVG;
 window.onresize = adjustSVG;
 
-/*Animation for Titles: https://gsap.com/community/forums/topic/35469-making-a-timeline-with-scrolltrigger/*/
-/*As relatively simple animation, this is common to all media queries */
+
+//Animation for screens above 1024px and in landscape as smaller screen have the static reading layout, used https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/
+let mm = gsap.matchMedia();
+mm.add("(min-width: 1025px) and (orientation: landscape)", () =>{ //Within this match media, which includes all screens above 1024px, I have added all my animations, smaller screens do not have the same css and experience implemented see report.
+
+/*Animation for Titles*/
 gsap.to(".scroll-out", {
-    x: () => window.innerWidth + 100, //Function pushing the div 100px to the right
-    scrollTrigger:{ //method to make the animation depending on scroll
+    x: () => window.innerWidth + 100, //Function returning the window width plus 100, giving .scroll-out the position it will got to with gsap.to
+    scrollTrigger:{ //method to make the animation/move to the above calculated x value, depending on scroll
         trigger: ".scroll-out", //animation is triggered by the div scroll out
         start: "top top", //animation starts at the top of .scroll-out div
         scrub: "true", //animation smoothly catch up to the scroll progress in that section https://gsap.com/docs/v3/Plugins/ScrollTrigger/?page=1
@@ -29,10 +33,19 @@ gsap.to(".scroll-out", {
     }
 });
 
+gsap.to("#indication",{
+    duration: 1, //animation takes 2 sec to complete
+    opacity: 0, //the indication div will go to 0 opacity, depending on scroll, same as above.
+    ease: "none", //aniamtion moves at a steady, linear rate from start to end.
+    scrollTrigger:{
+        trigger: ".scroll-out",
+        start: "top top", 
+        scrub: "true", 
+        end: "bottom top",
+        anticipatePin: 1, 
+    }
+});
 
-//Animation for screens above 1024px, used https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/
-let mm = gsap.matchMedia();
-mm.add("(min-width: 1025px) and (orientation: landscape)", () =>{ //Within this match media, which includes all screens above 1024px, I have added all my animations, smaller screens do not have the same css and experience implemented see report.
 
 let continent = document.getElementById("africa-svg");
 gsap.set(continent, { attr: { viewBox: "460 390 210 210" } }); //Using gsap to immedialty apply viewbox properties to the SVG
@@ -54,6 +67,7 @@ gsap.set("#ff-svg, #fs-svg, #ft-svg, #fl-svg, #pf-svg", { //resizing and rotatin
     rotate: 150,
 });
 
+//https://gsap.com/community/forums/topic/35469-making-a-timeline-with-scrolltrigger/
 gsap.timeline({ //timeline for this section, triggered by section with id=zero. Each chapter follow the same structure, with a timeline that starts at the corresponding chapter and ends later to give room for the scroll, then each animated elements within the chapter depends on that timeline
 scrollTrigger: {
     trigger: '#zero',
@@ -66,7 +80,7 @@ scrollTrigger: {
 })
 .from("#ff-svg", { 
     autoAlpha: 0,  //Both visibility and opacity are set at 0, meaning the svg starts from that states before beeing fully visible and opaque on scroll https://gsap.com/community/forums/topic/15361-understanding-autoalpha/
-    ease: "none", //Linear animation, no easing
+    ease: "none",
     duration: 1,
 })
 .from("#fs-svg", { 
@@ -106,21 +120,21 @@ timelineOne.from("#gnu",{
   autoAlpha: 0, 
   ease: "none",
   duration: 2,
-}, "start");
+}, "start"); //The animation applied to Gnu starts when the timeline starts
 
 timelineOne.from("#mum",{
   autoAlpha: 0, 
   ease: "none",
   duration: 2,
-},"start+=1");
+},"start+=1"); //The animation applied to the mum starts one second after the start of the timeline
 
 timelineOne.fromTo("#paragraph-1", { //Animating the paragraph from a starting position outside the viewport to a dynamic ending postion outside the viewport as well
   y: '1000px' // Starting the animation with '#paragraph-1' positioned 1000 pixels down from its original position
 }, {
-  y: () => -1 * (document.getElementById("paragraph-1").offsetHeight + 400), // Dynamically setting the ending y-position. Moving '#paragraph-1' to a position above its original place by its own height plus an additional 400 pixels for larger screens to ensure it is completly out of the viewport
-  ease: "power1.inOut", //
+  y: () => -1 * (document.getElementById("paragraph-1").offsetHeight + 400), // Dynamically setting the ending y-position. Moving '#paragraph-1' to a position above its original place by its own height plus an additional 400 pixels to ensure it is completly out of the viewport (same principle as title moving on the x axis)
+  ease: "power1.inOut", //Predefined easing function in gsap, power refers to the strengh of the easing cruve with 1 being relatively mild, inOut means the start and end are slow. I implemented this for all paragraphs to control their speed, making sure they dont arrive and leave the viewport to abruptly and are not missed by the reader https://gsap.com/docs/v3/Eases/
   duration: 5,
-}, 'start+=1.3'); //Delaying the start of the animation by 1sec after the start of the timeline, this way I coordinate how each elements appear in the timeline in relation to each other
+}, 'start+=1.3'); //Delaying the start of the animation by 1.3sec after the start of the timeline, this way I coordinate how each elements appear in the timeline in relation to each other
 
 timelineOne.fromTo("#paragraph-2", {
   y: '1000px'
@@ -143,17 +157,17 @@ timelineOne.from("#zebra",{
 },"start+=6");
 
 
-let sketch = function(p) { //Creating a rain transition. To do so, I am creating a function that takes a p5 instance to seperate from the global name space and thus other libraries https://www.youtube.com/watch?v=Su792jEauZg. This video https://www.youtube.com/watch?v=YQysSfaLDyo helped me create the rain object and then I modified variables to display it differently visually and incorporate GSAP elements
+let sketch = function(p) { //Creating a rain transition. To do so, I am creating a function that takes a p5 instance to seperate from the global name space and thus other libraries https://www.youtube.com/watch?v=Su792jEauZg. This video https://www.youtube.com/watch?v=YQysSfaLDyo helped me create the rain object and then I modified variables to display it differently visually and I then incorporated GSAP timeline.
     let rains = []; //array holding the rain objects declared in the rain class below
 
     p.setup = function() { //the set up function allows me to create the canvas element and initialise all variables https://p5js.org/reference/p5/setup/, this function runs once when the sktech starts.
-        let canvas = p.createCanvas(p.windowWidth, p.windowHeight +10 ); //Creating the canvas and asssigning its width to match the width of the viewport and the hieght to be the same as the viewport but with an extra 10px to smooth the colour transition with the next chapter
+        let canvas = p.createCanvas(p.windowWidth, p.windowHeight +10 ); //Creating the canvas and asssigning its width to match the width of the viewport and the height to be the same as the viewport but with an extra 10px to smooth the colour transition with the next chapter
         canvas.id("myCanvas"); //assigning id name to help with manipulating the canvas with GSAP
         canvas.parent('sketch-holder'); //assigning the 'sketch-holder div' as the parent element of the canvas https://p5js.org/reference/p5.Element/parent/
         p.background(48, 48, 50); //setting the background colour, same as next chapter for the transition
         canvas.style('opacity', '0'); //initailly setting the canvas to be fully transparent
 
-        timelineOne.to('#myCanvas', { //animating canvas on the same timeline as zebra, gzaelle, gnu, etc. It will become fully opaque, hiding all elements and starts 2sec after the timeline so 0.4 sec after paragraph-2
+        timelineOne.to('#myCanvas', { //animating canvas on the same timeline as zebra, gzaelle, gnu, etc. It will become fully opaque, hiding all elements and starts 2sec after the timeline
             opacity: 1,
             duration: 5,
         }, "start+=9");
@@ -211,7 +225,7 @@ let timelineTwo = gsap.timeline({
     }
 });
 
-timelineTwo.to(continent,{opacity:0}); //making the africa SVG transparent so other eleemnts and background appear later on
+timelineTwo.to(continent,{opacity:0}); //making the africa SVG transparent 
 
 timelineTwo.to("#forest",{
     position: "absolute",
@@ -319,7 +333,6 @@ timelineFour.fromTo('#cloud-one, #cloud-three', {
 }, {
     x: '-2000px',
     duration: 10,  
-    immediateRender: false //
 }, "start"
 );
 
@@ -328,7 +341,6 @@ timelineFour.fromTo('#cloud-two', {
 }, {
     x: '2000px',
     duration: 10, 
-    immediateRender: false
 }, "start");
 
 timelineFour.fromTo("#paragraph-6", {

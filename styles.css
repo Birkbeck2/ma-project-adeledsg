@@ -135,7 +135,7 @@ body{
     color: rgba(178, 198, 255, 1);
 }
 #subtitle {
-    font-family: "dreaming-outloud-script", sans-serif;
+    font-family: "dreaming-outloud-script", sans-serif; /*From Adobe font stylesheet*/
     font-weight: 400;
     font-style: normal;                             
     position: relative;
@@ -275,7 +275,6 @@ p{
     position: relative;
     background-color: rgba(255, 199, 0);
 }
-
 .footprints{
     position: absolute;
     top: 0;
@@ -319,7 +318,6 @@ p{
     width: 100%; 
     height: 100vh; 
 }
-
 #chapter-holder {
     position: absolute;
     top: 0;
@@ -333,7 +331,6 @@ p{
     align-items: center;
     text-align: center;  
 }
-
 #sketch-holder {
     position: absolute; 
     top: 0;
@@ -342,7 +339,6 @@ p{
     height: 100vh;
     z-index: 2; 
 }
-
 #paragraph-1 {
     padding-right: 2%;
     padding-left: 2%;
@@ -386,12 +382,10 @@ p{
         transform: rotate(3deg); /* Ending the rotation at 3 degrees */
     }
 }
-
 .head, #tail { /*Applying the 'moveSideToSide' animation to the head and tail of the SVG gnu.*/
     transform-origin: center; /* Ensuring the rotation happens from the center of the element */
     animation: moveSideToSide 1s infinite alternate ease-in-out; /* Applying animation with smooth acceleration and deceleration, running continuously in a loop with a 1-second duration https://www.w3schools.com/css/css3_transitions.asp#:~:text=ease%20%2D%20specifies%20a%20transition%20effect,effect%20with%20a%20slow%20end*/
 }
-
 #gnu {
     display: block;
     position: absolute;
@@ -909,7 +903,7 @@ p{
 }
 }
 
-@media only screen and (min-width: 1200px) and (orientation: landscape){ /*This media query is meant to display a similar experience than the previous one but I am adding slight adjustments in terms of positioning as the screen is bigger*/
+@media only screen and (min-width: 1200px) and (orientation: landscape){ /*This media query is meant to display a similar experience than the previous one but I am maing slight adjustments in terms of positioning as the screen is bigger*/
 .scroll-out{
     padding-top: 5%;
 }

@@ -7,8 +7,10 @@
         <meta name="description" content="Explore 'Be Wild,' an interactive digital story inspired by the great migrations. Follow a young wildebeest navigating the challenges of migration and belongings. This immersive narrative for Tweens combines animations and interactive elements."> <!--Implemented this meta tag after checking lighthouse report on SEO https://developer.chrome.com/docs/lighthouse/seo/meta-description/?-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
-        <!-- Preload and asynchronously load Adobe fonts, accessed through subscription -->
+        <!-- Preload the Adobe font stylesheet (created via subscribed account) to fetch it as soon as possible without blocking rendering (affected performance Lighthouse)-->
         <link rel="preload" href="https://use.typekit.net/dtz5res.css" as="style" onload="this.rel='stylesheet'">
+
+        <!-- Link to the Adobe font stylesheet with media type 'print' to prevent it from blocking rendering; changed media to 'all' when loaded to apply styles; https://www.holisticseo.digital/pagespeed/async-css/-->
         <link href="https://use.typekit.net/dtz5res.css" rel="stylesheet" media="print" onload="this.media='all'">
     
         <!-- Preload and asynchronously load Google Fonts -->
@@ -31,14 +33,14 @@
 
         <div id="indication">
             <p>Scroll down to start</p>
-            <svg id="arrow" width="42" height="49" viewBox="0 0 42 49" xmlns="http://www.w3.org/2000/svg" role="presentation">
+            <svg id="arrow" width="42" height="49" viewBox="0 0 42 49" xmlns="http://www.w3.org/2000/svg" role="presentation"> <!--Since arrow is adjacent to text, the svg is purely decorative so the role="presentation" attribute tells assistive technologies to ignore it-->
                 <path d="M22 2V47M22 47L2 27.5M22 47L40 27.5" stroke="#B295FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div>
 
         <div class="landing">
             <div class="svg-container">
-                <svg version="1.1" id="africa-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-title map-desc"> <!--Map free of use for non-commercial purpose from https://www.amcharts.com/svg-maps/?map=africa-->
+                <svg version="1.1" id="africa-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-title map-desc"> <!--Map free of use for non-commercial purpose, from https://www.amcharts.com/svg-maps/?map=africa-->
                     <title id="map-title">Map of Africa</title>
                     <desc id="map-desc">A map of the African continent used to illustrate where the Great Migrations take place</desc> <!--Using ARIA to enhance SVG accessibility, SVG possesses title and desc attributes so refering to those with arialabbeledby https://www.tpgi.com/using-aria-enhance-svg-accessibility/-->
                     <g>
@@ -237,7 +239,7 @@
 
                 <svg id="gazelle" width="274" height="260" viewBox="0 0 274 260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="gazelle-title gazelle-desc">
                     <title id="gazelle-title">Gazelle</title>
-                    <desc id="gazelle-desc">Illustration of a gazelle, standing next to gnu, grazing</desc>
+                    <desc id="gazelle-desc">Illustration of a gazelle grazing, standing next to Gnu.</desc>
                     <path d="M112.267 198.456C115.18 195.391 124.466 173.548 128.745 163.01C129.32 163.01 130.968 162.626 132.96 161.094C134.953 159.561 140.05 161.732 142.349 163.01C142.157 163.521 141.506 164.849 140.433 166.075C139.36 167.302 135.898 169.524 134.302 170.482C128.553 183.894 116.751 210.566 115.524 209.952C113.992 209.186 113.8 220.299 112.267 218.191C110.734 216.084 100.963 235.436 98.4717 236.202C96.5696 236.787 93.2361 243.471 91.6038 247.188C91.595 247.446 91.5252 247.62 91.3824 247.698C91.4521 247.536 91.526 247.365 91.6038 247.188C91.7252 243.641 80.2916 224.336 88.5084 224.514C95.5594 224.668 99.7491 217.169 100.963 213.401C101.282 211.932 102.419 208.918 104.411 208.611C106.902 208.228 108.627 202.288 112.267 198.456Z" fill="#7F7865"/>
                     <path d="M129.129 157.07C129.129 156.457 128.746 153.749 128.555 152.472V150.939C130.279 150.108 134.035 148.256 135.261 147.49C136.794 146.532 140.434 149.214 141.392 149.214C142.35 149.214 142.925 151.897 143.883 154.962C144.649 157.415 143.564 160.327 142.925 161.477C143.538 159.331 133.6 159.561 128.555 159.944C128.746 159.242 129.129 157.683 129.129 157.07Z" fill="#C5C3AC"/>
                     <path d="M127.594 149.405C127.747 147.565 112.202 121.814 104.41 109.168L123.187 113.575C129.446 122.9 142.118 142.2 142.731 144.806C143.344 147.412 142.986 149.596 142.731 150.363C142.271 146.684 136.536 146.531 133.725 146.914C131.618 148.51 127.441 151.244 127.594 149.405Z" fill="#7F7865"/>
@@ -267,7 +269,7 @@
         <p id="paragraph-3">When crossing the Ruana plains, Gnu’s melancholy has faded, the longing for his birth pastures replaced by bewilderment and a blossoming curiosity. The new land is resplendent in its vastitude, savannah as far as the eye can see, dotted with acacia trees. The plains seem richer and more boundless than those he remembers in Ndutu. A wonder sparks in Gnu about the need of their constant migration. Tempted by the lushness around him, he questions his family’s relentless pursuit. Drawn by the desire to explore further and perhaps establish a life right where he is, Gnu strays from the herd, heading towards the horizon.</p>
         
         <div id="trees">
-            <img id="baobab" src="assets/full_baobab.png" alt="A vibrant baobab tree fading in the forground" width="1080" height="1080"> <!--adding alt text for all images, describing it https://www.w3schools.com/tags/att_img_alt.asp-->
+            <img id="baobab" src="assets/full_baobab.png" alt="A vibrant baobab tree fading in the forground" width="1080" height="1080"> <!--adding alt text for all images for assitive technologies, https://www.w3schools.com/tags/att_img_alt.asp-->
             <img id="acacia" src="assets/full_acacia.png" alt="A vibrant acacia tree fading in the forground" width="567" height="509">
             <img id="baobab-2" src="assets/baobab-2.png" alt="A second, taller vibrant baobab tree fading in the foreground" width="2224" height="1668">
         </div>
@@ -381,7 +383,7 @@
         </div>
 
         <div id="waves" aria-describedby="description-five">
-            <svg id="wave-one" width="1512" height="466" viewBox="0 -50 1512 466" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation"> <!--Modified min-y to adjust the height of each svg-->
+            <svg id="wave-one" width="1512" height="466" viewBox="0 -50 1512 466" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation">
                 <path d="M324.009 293.429C228.554 287.535 58.23 328.165 -15 349.216V475H1530V299.745C1527.95 312.902 1456.77 332.375 1441.41 342.375C1426.04 352.374 1400.44 356.058 1375.86 324.481C1351.28 292.903 1413.75 293.429 1461.38 251.326C1509 209.223 1473.16 205.012 1461.38 214.486C1449.6 223.959 1408.63 270.273 1392.76 270.273C1376.88 270.273 1375.86 249.221 1340.01 270.273C1304.16 291.325 1281.63 290.272 1292.39 270.273C1303.14 250.274 1329.26 212.907 1281.63 227.643C1234.01 242.379 1244.25 205.012 1243.23 196.592C1242.2 188.171 1264.73 166.593 1292.39 153.962C1320.04 141.331 1294.43 132.91 1281.63 137.648C1268.83 142.385 1244.25 169.225 1226.84 153.962C1209.43 138.7 1220.69 122.385 1213.01 113.964C1205.33 105.544 1188.94 124.49 1193.04 161.33C1197.14 198.171 1172.56 188.697 1160.27 181.856C1147.97 175.014 1163.34 147.12 1152.07 153.962C1140.81 160.804 1149 148.173 1160.27 105.017C1171.53 61.8611 1135.17 93.9654 1139.27 101.333C1143.37 108.701 1134.15 125.542 1130.05 161.33C1125.95 197.118 1114.69 193.434 1112.64 196.592C1110.59 199.749 1051.19 202.381 1044.02 140.805C1036.85 79.229 1005.1 72.3869 995.37 70.808C985.64 69.2292 957.474 80.2813 946.208 52.3878C934.942 24.4944 931.869 6.07411 923.676 5.02153C915.482 3.96895 932.894 41.8619 920.603 41.3357C908.313 40.8094 903.192 39.7568 923.676 64.4925C944.16 89.2282 915.482 93.9654 908.825 88.7019C902.168 83.4384 895.51 58.7033 890.39 64.4925C885.285 70.2632 877.127 67.1438 855.266 58.7839L855.055 58.7033C833.034 50.2829 833.547 43.4405 808.454 17.1259C783.361 -9.18863 781.825 20.81 782.337 24.494C782.849 28.1781 790.018 66.5974 760.317 67.1236C730.615 67.6499 720.373 78.1758 708.595 91.3331C696.816 104.49 715.252 124.49 743.417 98.702C771.583 72.9137 778.752 90.2813 776.192 93.9654C773.631 97.6494 738.808 110.807 751.611 113.964C764.413 117.122 762.877 133.964 760.317 137.648C757.756 141.332 738.808 146.594 708.595 140.805C678.381 135.016 684.014 169.225 689.135 178.698C694.256 188.171 689.135 198.697 681.453 205.012C673.772 211.327 657.897 188.171 623.074 205.012C588.252 221.853 628.195 255.01 633.828 244.484C639.461 233.959 661.482 238.168 684.014 238.168C706.546 238.168 699.889 276.062 681.453 270.273C663.018 264.483 667.115 276.062 657.897 284.483C648.679 292.903 673.26 305.534 673.26 310.797C673.26 316.06 650.215 332.375 673.26 337.638C696.304 342.901 689.135 301.324 694.256 301.324C699.377 301.324 718.837 298.692 715.252 270.273C711.667 241.853 727.542 253.958 729.591 255.01C731.639 256.063 731.639 269.746 727.542 276.062C723.445 282.377 714.74 322.376 738.808 324.481C758.063 326.165 756.732 304.482 753.659 293.429C741.028 275.009 727.337 231.537 773.631 205.012C831.498 171.856 882.708 212.38 898.583 238.168C914.458 263.957 935.454 345.006 870.418 367.11C805.381 389.214 750.587 383.425 689.135 367.11C627.683 350.795 443.328 300.798 324.009 293.429Z" fill="#569CDB" stroke="#0159A9" stroke-width="10" stroke-linecap="round"/>
             </svg>
 
@@ -576,11 +578,11 @@
         <p id="paragraph-11">The End</p>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script> <!--GSAP plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script> <!--GSAP plugin, https://gsap.com/docs/v3/Installation?tab=cdn&module=esm&method=private+registry&tier=free&club=false&require=false&trial=true-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script> <!--GSAP ScrollTrigger plugin-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/TextPlugin.min.js"></script> <!--GSAP Text plugin-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollToPlugin.min.js"></script> <!--GSAP ScrollTo plugin-->
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script> <!--P5 library-->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script> <!--P5 library, https://p5js.org/download/-->
     <script src="script.js"></script> <!--Custom Script-->
 
     </body>
