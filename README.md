@@ -1,6 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/mJVrCDeO)
 
-# BE WILD: An interactive digital story on the great migrations
+# BE WILD: An Interactive Digital Story for Tweens
 
 ## Table of Contents
 * [General Information](#general-information)
@@ -14,9 +14,10 @@ This repository contains all the files necessary for the interacive digital stor
 
 Be Wild, though inspired by the real events of the great migrations, is a short fictional narrative that explores themes of growth and belongings. By mirroring the journey of a young wildebeest with the transition from childhood to adulthood incorporating animations and interactivity, this story aims to engage young readers, allowing them to learn and connect with these experiences.
 
-The website can be found at: 
+The website can be found at: https://birkbeck2.github.io/ma-project-adeledsg/
 
 This interactive story was made in the context of a homework assignment and is not for commercial use. It is submitted along a report via Turnitin. 
+For best experience, visualise the project on a large screen (above 1024px), i.e. destkop or tablet in landscape mode.
 
 ## File content 
 The following files are used for the story:

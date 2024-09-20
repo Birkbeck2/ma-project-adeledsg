@@ -266,13 +266,12 @@ timelineTwo.fromTo("#paragraph-4", {
 
 timelineTwo.to("#blood",{
   opacity: 1, 
-  duration: 2,
 });
 
 timelineTwo.to("#blood-layer",{
   opacity: 1, 
-  duration: 2,
-});
+  duration: 10,
+}, "start+=10");
 
 /*Chapter 3 */
 let timelineThree = gsap.timeline({
