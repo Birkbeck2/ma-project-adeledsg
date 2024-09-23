@@ -18,7 +18,7 @@ html::-webkit-scrollbar {
     display: none; /*Chrome and Safari*/
 }
 p{
-    font-family: 'inter', 'sans-serif';
+    font-family: 'OpenDyslexicMono', 'sans-serif';
 }
 .hidden{ /*making the descriptions in html only accessible to screen readers, not visually apparent https://webaim.org/techniques/css/invisiblecontent/*/
     position: absolute;
@@ -27,6 +27,11 @@ p{
     overflow: hidden;
     left: -10000px;
     top: auto;
+}
+
+@font-face{ /*Specifying where the downloaded OpenDyslexic font can be found https://www.w3schools.com/cssref/css3_pr_font-face_rule.php, https://antijingoist.itch.io/opendyslexic*/
+    font-family: 'OpenDyslexicMono';
+    src: url('font/OpenDyslexicMono-Regular.otf') format('opentype');
 }
 
 /*Considerations about media queries: The following 4 media queries were selected for the following reasons
@@ -152,9 +157,8 @@ body{
     padding-right: 10%;
 }
 p{
-    font-family: 'inter', 'sans-serif';
+    font-family:'OpenDyslexicMono', 'sans-serif';
     color: rgba(255, 199, 0);
-    line-height: 2;
 }
 #paragraph-1{
     padding-bottom: 10%;
@@ -219,7 +223,7 @@ p{
     right: 0;
 }
 #indication p {
-    font-family: 'Inter', 'sans-serif';
+    font-family: 'OpenDyslexicMono', 'sans-serif';
     font-style: normal;
     font-weight: 400;
     position: relative;
@@ -269,9 +273,8 @@ p{
     text-align: center;  
 }
 #paragraph-0 {
-    padding-right: 15%;
-    padding-left: 17%;
-    line-height: 3;
+    padding-right: 10%;
+    padding-left: 10%;
     position: relative;
     background-color: rgba(255, 199, 0);
 }
@@ -344,12 +347,11 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2;
     position: relative;
     color: rgba(48, 48, 50, 1);
-    background-color: rgba(221, 221, 221, 0.6);
+    background-color: rgba(221, 221, 221, 0.7);
     display: inline-block;
-    width: 60%;
+    width: 70%;
     z-index: 11;
 }
 #paragraph-2{
@@ -357,11 +359,10 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
-    background-color: rgba(221, 221, 221, 0.6);
-    width: 60%;
+    background-color: rgba(221, 221, 221, 0.7);
+    width: 70%;
     z-index: 12;
 }
 .container{
@@ -449,12 +450,11 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
-    background-color: rgba(221, 221, 221, 0.6);
+    background-color: rgba(221, 221, 221, 0.7);
     z-index: 10;
-    width: 60%;
+    width: 70%;
 }
 #trees{
     position: absolute;
@@ -498,12 +498,11 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
-    background-color: rgba(221, 221, 221, 0.6);
+    background-color: rgba(221, 221, 221, 0.7);
     z-index: 10;
-    width: 60%;
+    width: 70%;
 }
 #blood{
     display: block;
@@ -544,12 +543,11 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
-    background-color: rgba(221, 221, 221, 0.6);
+    background-color: rgba(221, 221, 221, 0.7);
     z-index: 11;
-    width: 60%;
+    width: 70%;
 }
 #death{
     width: 100vw;
@@ -587,12 +585,11 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
-    background-color: rgba(221, 221, 221, 0.6);
+    background-color: rgba(221, 221, 221, 0.7);
     z-index: 10;
-    width: 60%;
+    width: 70%;
 }
 #clouds{
     display: block;
@@ -622,12 +619,11 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
-    background-color: rgba(221, 221, 221, 0.6);
+    background-color: rgba(221, 221, 221, 0.7);
     z-index: 10;
-    width: 60%;
+    width: 70%;
 }
 
 /*Chapter 5*/
@@ -694,12 +690,11 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
-    background-color: rgba(221, 221, 221, 0.6);
+    background-color: rgba(221, 221, 221, 0.7);
     z-index: 10;
-    width: 60%;
+    width: 70%;
 }
 /*Chapter Six*/
 #six{
@@ -716,12 +711,11 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
-    background-color: rgba(221, 221, 221, 0.6);
+    background-color: rgba(221, 221, 221, 0.7);
     z-index: 10;
-    width: 60%;
+    width: 70%;
 }
 #jump{
     width: auto;
@@ -871,12 +865,11 @@ p{
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
-    line-height: 2;
     position: absolute;
     color: rgba(48, 48, 50, 1);
-    background-color: rgba(221, 221, 221, 0.6);
+    background-color: rgba(221, 221, 221, 0.7);
     z-index: 10;
-    width: 60%;
+    width: 70%;
 }
 /*End*/
 #end{
@@ -1098,7 +1091,7 @@ body{
     font-style: normal;                                                       
     position: relative;
     text-transform: uppercase;
-    font-size: 4rem; 
+    font-size: 5rem; 
     color: rgba(178, 198, 255, 1);
 }
 #subtitle {
@@ -1108,7 +1101,7 @@ body{
     position: relative;
     color: rgba(178, 198, 255, 1);
     font-weight: 100;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 .chapter{
     display: flex;
@@ -1120,7 +1113,7 @@ body{
     padding-right: 10%;
 }
 p{
-    font-family: 'inter', 'sans-serif';
+    font-family: 'OpenDyslexicMono', 'sans-serif';
     color: rgba(255, 199, 0);
     line-height: 2;
 }

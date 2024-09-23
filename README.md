@@ -10,7 +10,7 @@
 
 ## General Information
 
-This repository contains all the files necessary for the interacive digital story BE WILD. All images and graphics can be found in the `assets` folder.
+This repository contains all the files necessary for the interacive digital story BE WILD. All images and graphics can be found in the `assets` folder and the main font, Dyslexic Mono can be found in the `font` folder.
 
 Be Wild, though inspired by the real events of the great migrations, is a short fictional narrative that explores themes of growth and belongings. By mirroring the journey of a young wildebeest with the transition from childhood to adulthood incorporating animations and interactivity, this story aims to engage young readers, allowing them to learn and connect with these experiences.
 
