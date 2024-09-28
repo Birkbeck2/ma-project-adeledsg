@@ -221,7 +221,7 @@ let timelineTwo = gsap.timeline({
     scrollTrigger: {
       trigger: '#two',
       start: 'top top', 
-      end: '+=3000', 
+      end: '+=6000', 
       scrub: true,   
       pin: true,
       anticipatePin: 1,
@@ -273,8 +273,8 @@ timelineTwo.to("#blood",{
 
 timelineTwo.to("#blood-layer",{
   opacity: 1, 
-  duration: 10,
-}, "start+=10");
+  duration: 1,
+}, "start+=5");
 
 /*Chapter 3 */
 let timelineThree = gsap.timeline({
@@ -322,8 +322,7 @@ let timelineFour = gsap.timeline({
     scrollTrigger: {
     trigger: '#four',
     start: 'top top', 
-    endTrigger: '#seven',
-    end: 'top top', 
+    end: '+=6000', 
     scrub: true, 
     pin: true,
     anticipatePin: 1,
