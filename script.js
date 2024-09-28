@@ -5,16 +5,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 //Creating a function that adjusts the viewbox of arrow svg depending on the media query as different css positioning was not working
 function adjustSVG() {
-let width = window.innerWidth;
-let arrow = document.getElementById('arrow');
-if (width < 1200) {
-    arrow.setAttribute('viewBox', '-480 0 42 49');
-} else if (width > 1200) {
-    arrow.setAttribute('viewBox', '-570 0 42 49');
+    let width = window.innerWidth;
+    let arrow = document.getElementById('arrow');
+    if (width <= 1200) {
+        arrow.setAttribute('viewBox', '-480 0 42 49');
+    } else {
+        arrow.setAttribute('viewBox', '-570 0 42 49');
+    }
 }
-};
+
 window.onload = adjustSVG;
 window.onresize = adjustSVG;
+
 
 
 //Animation for screens above 1024px and in landscape as smaller screen have the static reading layout, used https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/
@@ -27,20 +29,20 @@ gsap.to(".scroll-out", {
     scrollTrigger:{ //method to make the animation/move to the above calculated x value, depending on scroll
         trigger: ".scroll-out", //animation is triggered by the div scroll out
         start: "top top", //animation starts at the top of .scroll-out div
-        scrub: "true", //animation smoothly catch up to the scroll progress in that section https://gsap.com/docs/v3/Plugins/ScrollTrigger/?page=1
+        scrub: true, //animation smoothly catch up to the scroll progress in that section https://gsap.com/docs/v3/Plugins/ScrollTrigger/?page=1
         end: "bottom top", //increasing distance for smoother animation
         anticipatePin: 1, //this helps make transitions into and out of pinned state smoother. As I have a long scrolling narrative, this helps mainting a fluid scrolling/pinning avoiding jumps https://gsap.com/community/forums/topic/26335-scrolltrigger-pin-jumpssnaps-on-triggering/
     }
 });
 
 gsap.to("#indication",{
-    duration: 1, //animation takes 2 sec to complete
+    duration: 1, //animation takes 1 sec to complete
     opacity: 0, //the indication div will go to 0 opacity, depending on scroll, same as above.
     ease: "none", //aniamtion moves at a steady, linear rate from start to end.
     scrollTrigger:{
         trigger: ".scroll-out",
         start: "top top", 
-        scrub: "true", 
+        scrub: true, 
         end: "bottom top",
         anticipatePin: 1, 
     }
@@ -48,6 +50,7 @@ gsap.to("#indication",{
 
 
 let continent = document.getElementById("africa-svg");
+
 gsap.set(continent, { attr: { viewBox: "460 390 210 210" } }); //Using gsap to immedialty apply viewbox properties to the SVG
 gsap.to(continent, { //Changing the SVG view on scroll using GSAP scrolltrigger
     attr: { viewBox: "510 420 1 1" }, //The target viewbox after animation
