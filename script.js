@@ -3,6 +3,10 @@ gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(TextPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
+ScrollTrigger.config({
+    autoRefreshEvents: "resize,visibilitychange"
+});
+
 //Creating a function that adjusts the viewbox of arrow svg depending on the media query as different css positioning was not working
 function adjustSVG() {
     let width = window.innerWidth;
@@ -221,7 +225,8 @@ let timelineTwo = gsap.timeline({
     scrollTrigger: {
       trigger: '#two',
       start: 'top top', 
-      end: '+=6000', 
+      endTrigger: '#five',
+      end: 'top top',
       scrub: true,   
       pin: true,
       anticipatePin: 1,
