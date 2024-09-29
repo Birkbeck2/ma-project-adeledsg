@@ -339,8 +339,9 @@ p{
     top: 0;
     left: 0;
     width: 100%;
-    height: 110vh;
+    height: 100vh;
     z-index: 2; 
+    overflow: visible;
 }
 #paragraph-1 {
     padding-right: 2%;
