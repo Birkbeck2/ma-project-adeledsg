@@ -3,7 +3,7 @@ gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(TextPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
-ScrollTrigger.config({
+ScrollTrigger.config({ // Ensures ScrollTrigger refreshes on resize or visibility change to prevent scroll from becoming unresponsive on iPads https://gsap.com/docs/v3/Plugins/ScrollTrigger/static.config()/
     autoRefreshEvents: "resize,visibilitychange"
 });
 
