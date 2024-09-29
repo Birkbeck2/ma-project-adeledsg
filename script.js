@@ -169,6 +169,7 @@ let sketch = function(p) { //Creating a rain transition. To do so, I am creating
 
     p.setup = function() { //the set up function allows me to create the canvas element and initialise all variables https://p5js.org/reference/p5/setup/, this function runs once when the sktech starts.
         let canvas = p.createCanvas(p.windowWidth, p.windowHeight); //Creating the canvas and asssigning its width to match the width of the viewport and the height to be the same as the viewport but with an extra 10px to smooth the colour transition with the next chapter
+        canvas.position(0, 0); //ensuring the canvas starts at the top left corner of the window
         canvas.id("myCanvas"); //assigning id name to help with manipulating the canvas with GSAP
         canvas.parent('sketch-holder'); //assigning the 'sketch-holder div' as the parent element of the canvas https://p5js.org/reference/p5.Element/parent/
         p.background(48, 48, 50); //setting the background colour, same as next chapter for the transition
